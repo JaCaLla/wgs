@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -23,9 +23,11 @@
 		BF43412222304840009BB87C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF43412022304840009BB87C /* Main.storyboard */; };
 		BF43412422304841009BB87C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF43412322304841009BB87C /* Assets.xcassets */; };
 		BF43412722304841009BB87C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF43412522304841009BB87C /* LaunchScreen.storyboard */; };
+		BF73B15022307CF90019D51A /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF73B14F22307CF80019D51A /* R.generated.swift */; };
 		BFF9107D22305BC7000BA87A /* Picture.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF9107C22305BC7000BA87A /* Picture.swift */; };
 		BFF9108122305EED000BA87A /* MockAPIRestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF9107F22305EED000BA87A /* MockAPIRestClient.swift */; };
 		BFF9108222305EED000BA87A /* MockAPIManagerWrongUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF9108022305EED000BA87A /* MockAPIManagerWrongUrl.swift */; };
+		BFF910F422306E0C000BA87A /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF910F322306E0C000BA87A /* DataManager.swift */; };
 		E8C07080603E018D3B46E926 /* Pods_wgs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A5E7C8762DA29CD24D08B6A /* Pods_wgs.framework */; };
 /* End PBXBuildFile section */
 
@@ -64,9 +66,11 @@
 		BF43412822304841009BB87C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF43412D22304842009BB87C /* wgsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = wgsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF43413322304842009BB87C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF73B14F22307CF80019D51A /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		BFF9107C22305BC7000BA87A /* Picture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Picture.swift; sourceTree = "<group>"; };
 		BFF9107F22305EED000BA87A /* MockAPIRestClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockAPIRestClient.swift; sourceTree = "<group>"; };
 		BFF9108022305EED000BA87A /* MockAPIManagerWrongUrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockAPIManagerWrongUrl.swift; sourceTree = "<group>"; };
+		BFF910F322306E0C000BA87A /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		DD463FCBEBA76EC0FF11F76F /* Pods-wgsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wgsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-wgsTests/Pods-wgsTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -102,6 +106,7 @@
 		BF3DD2C822304DD400489FBA /* DataLayer */ = {
 			isa = PBXGroup;
 			children = (
+				BFF910F322306E0C000BA87A /* DataManager.swift */,
 				BF3DD2D522304F7C00489FBA /* Core */,
 				BF3DD2D022304F4B00489FBA /* Model */,
 				BF3DD2C922304E4D00489FBA /* APIManager */,
@@ -180,6 +185,7 @@
 		BF43411B22304840009BB87C /* wgs */ = {
 			isa = PBXGroup;
 			children = (
+				BFF910F62230710D000BA87A /* ViewLayer */,
 				BF3DD2C822304DD400489FBA /* DataLayer */,
 				BF43411C22304840009BB87C /* AppDelegate.swift */,
 				BF43411E22304840009BB87C /* ViewController.swift */,
@@ -200,6 +206,14 @@
 			path = wgsTests;
 			sourceTree = "<group>";
 		};
+		BF73B14E22307CF80019D51A /* R.Swift */ = {
+			isa = PBXGroup;
+			children = (
+				BF73B14F22307CF80019D51A /* R.generated.swift */,
+			);
+			path = R.Swift;
+			sourceTree = "<group>";
+		};
 		BFF9107E22305EED000BA87A /* Mock */ = {
 			isa = PBXGroup;
 			children = (
@@ -207,6 +221,22 @@
 				BFF9108022305EED000BA87A /* MockAPIManagerWrongUrl.swift */,
 			);
 			path = Mock;
+			sourceTree = "<group>";
+		};
+		BFF910F62230710D000BA87A /* ViewLayer */ = {
+			isa = PBXGroup;
+			children = (
+				BFF910F72230710D000BA87A /* Resources */,
+			);
+			path = ViewLayer;
+			sourceTree = "<group>";
+		};
+		BFF910F72230710D000BA87A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BF73B14E22307CF80019D51A /* R.Swift */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		DD576DA1DDD9DB3E84D65E91 /* Pods */ = {
@@ -228,6 +258,7 @@
 			buildConfigurationList = BF43413622304842009BB87C /* Build configuration list for PBXNativeTarget "wgs" */;
 			buildPhases = (
 				3612C5CF9D73B7BBEE3EA287 /* [CP] Check Pods Manifest.lock */,
+				BFF910F522306E97000BA87A /* R.Swift */,
 				BF43411522304840009BB87C /* Sources */,
 				BF43411622304840009BB87C /* Frameworks */,
 				BF43411722304840009BB87C /* Resources */,
@@ -326,6 +357,7 @@
 			files = (
 			);
 			inputFileListPaths = (
+				"",
 			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
@@ -363,6 +395,26 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		BFF910F522306E97000BA87A /* R.Swift */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$TEMP_DIR/rswift-lastrun",
+			);
+			name = R.Swift;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				$SRCROOT/wgs/ViewLayer/Resources/R.Swift/R.generated.swift,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "echo \">>>>>>>>>>>>>>>> R.Swift >>>>>>>>>>>>>>>>>>>>>>\"\n#\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/wgs/ViewLayer/Resources/RSwift/R.generated.swift\"\n\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/wgs/ViewLayer/Resources/R.Swift/R.generated.swift\"\necho \"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\"\n";
 		};
 		C1336832DCAED7C0037F07DC /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -404,6 +456,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFF9107D22305BC7000BA87A /* Picture.swift in Sources */,
+				BF73B15022307CF90019D51A /* R.generated.swift in Sources */,
 				BF43411F22304840009BB87C /* ViewController.swift in Sources */,
 				BF3DD2D722304F7C00489FBA /* Resetable.swift in Sources */,
 				BF3DD2D422304F4B00489FBA /* Person.swift in Sources */,
@@ -414,6 +467,7 @@
 				BF3DD2CD22304EBF00489FBA /* APIManager.swift in Sources */,
 				BF3DD2D322304F4B00489FBA /* ParkImage.swift in Sources */,
 				BF3DD2E12230599500489FBA /* Name.swift in Sources */,
+				BFF910F422306E0C000BA87A /* DataManager.swift in Sources */,
 				BF3DD2DF223057F600489FBA /* Coordinates.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
