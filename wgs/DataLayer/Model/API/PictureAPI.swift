@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-struct Picture {
+struct PictureAPI {
 
     struct  JSONAttributeKey {
         static let thumbnail = "thumbnail"
@@ -19,7 +19,7 @@ struct Picture {
     var thumbnail:String = ""
 }
 
-extension Picture:Decodable {
+extension PictureAPI:Decodable {
     enum PictureKeys: String, CodingKey {
         case thumbnail = "thumbnail"
     }

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-struct Coordinates {
+struct CoordinatesAPI {
 
     struct  JSONAttributeKey {
         static let latitude = "latitude"
@@ -21,7 +21,7 @@ struct Coordinates {
     var longitude:String = ""
 }
 
-extension Coordinates:Decodable {
+extension CoordinatesAPI:Decodable {
     enum CoordinatesKeys: String, CodingKey {
         case latitude = "latitude"
         case longitude = "longitude"

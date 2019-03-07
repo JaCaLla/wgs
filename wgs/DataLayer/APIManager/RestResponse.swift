@@ -29,7 +29,7 @@ struct RestResponse {
     //var total:Int = -1
     //var limit:Int = -1
     //var start:Int = -1
-    var results:[Person] = []
+    var results:[PersonAPI] = []
 }
 
 extension RestResponse:Decodable {
@@ -45,7 +45,7 @@ extension RestResponse:Decodable {
        // let total = try container.decode(Int.self, forKey: .total)
        // let limit = try container.decode(Int.self, forKey: .limit)
        // let start = try container.decode(Int.self, forKey: .start)
-        let results = try container.decode([Person].self, forKey: .results)
+        let results = try container.decode([PersonAPI].self, forKey: .results)
 
         self.init(results:results)
     }

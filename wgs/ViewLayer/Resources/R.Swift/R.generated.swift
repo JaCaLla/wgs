@@ -16,21 +16,61 @@ struct R: Rswift.Validatable {
     try intern.validate()
   }
   
-  /// This `R.storyboard` struct is generated, and contains static references to 2 storyboards.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 1 reuse identifiers.
+  struct reuseIdentifier {
+    /// Reuse identifier `PeopleListTVC`.
+    static let peopleListTVC: Rswift.ReuseIdentifier<PeopleListTVC> = Rswift.ReuseIdentifier(identifier: "PeopleListTVC")
+    
+    fileprivate init() {}
+  }
+  
+  /// This `R.storyboard` struct is generated, and contains static references to 1 storyboards.
   struct storyboard {
     /// Storyboard `LaunchScreen`.
     static let launchScreen = _R.storyboard.launchScreen()
-    /// Storyboard `Main`.
-    static let main = _R.storyboard.main()
     
     /// `UIStoryboard(name: "LaunchScreen", bundle: ...)`
     static func launchScreen(_: Void = ()) -> UIKit.UIStoryboard {
       return UIKit.UIStoryboard(resource: R.storyboard.launchScreen)
     }
     
-    /// `UIStoryboard(name: "Main", bundle: ...)`
-    static func main(_: Void = ()) -> UIKit.UIStoryboard {
-      return UIKit.UIStoryboard(resource: R.storyboard.main)
+    fileprivate init() {}
+  }
+  
+  /// This `R.string` struct is generated, and contains static references to 1 localization tables.
+  struct string {
+    /// This `R.string.localizable` struct is generated, and contains static references to 4 localization keys.
+    struct localizable {
+      /// Value: Instructions
+      static let picture_viewer_alert_title = Rswift.StringResource(key: "picture_viewer_alert_title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: NPS Selector
+      static let nps_selector_title = Rswift.StringResource(key: "nps_selector_title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: OK
+      static let picture_viewer_alert_button = Rswift.StringResource(key: "picture_viewer_alert_button", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Pinch for Zoom in/out. Double tap for restore image size
+      static let picture_viewer_alert_message = Rswift.StringResource(key: "picture_viewer_alert_message", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      
+      /// Value: Instructions
+      static func picture_viewer_alert_title(_: Void = ()) -> String {
+        return NSLocalizedString("picture_viewer_alert_title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// Value: NPS Selector
+      static func nps_selector_title(_: Void = ()) -> String {
+        return NSLocalizedString("nps_selector_title", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// Value: OK
+      static func picture_viewer_alert_button(_: Void = ()) -> String {
+        return NSLocalizedString("picture_viewer_alert_button", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// Value: Pinch for Zoom in/out. Double tap for restore image size
+      static func picture_viewer_alert_message(_: Void = ()) -> String {
+        return NSLocalizedString("picture_viewer_alert_message", bundle: R.hostingBundle, comment: "")
+      }
+      
+      fileprivate init() {}
     }
     
     fileprivate init() {}
@@ -57,7 +97,6 @@ struct _R: Rswift.Validatable {
   struct storyboard: Rswift.Validatable {
     static func validate() throws {
       try launchScreen.validate()
-      try main.validate()
     }
     
     struct launchScreen: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
@@ -65,20 +104,6 @@ struct _R: Rswift.Validatable {
       
       let bundle = R.hostingBundle
       let name = "LaunchScreen"
-      
-      static func validate() throws {
-        if #available(iOS 11.0, *) {
-        }
-      }
-      
-      fileprivate init() {}
-    }
-    
-    struct main: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
-      typealias InitialController = ViewController
-      
-      let bundle = R.hostingBundle
-      let name = "Main"
       
       static func validate() throws {
         if #available(iOS 11.0, *) {

@@ -11,7 +11,7 @@ import XCTest
 
 class UTAPIManager: XCTestCase {
 
-    let timeout:Double = 5.0
+    let timeout:Double = 10.0
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -33,14 +33,13 @@ class UTAPIManager: XCTestCase {
 
     func testGetPersonsUrl() {
 
-        var getPersons = APIManager.APIRouter.getPersons
-        XCTAssertEqual(getPersons.method, .get)
-        XCTAssertEqual(getPersons.path, "/")
-        XCTAssertEqual(getPersons.resolveURLRequest().httpMethod ?? "", "GET")
+        let getPersons = APIManager.APIRouter.getPersons
+        XCTAssertEqual(getPersons(0).method, .get)
+        XCTAssertEqual(getPersons(0).path, "/")
+        XCTAssertEqual(getPersons(0).resolveURLRequest().httpMethod ?? "", "GET")
 
-        XCTAssertEqual(getPersons.resolveURLRequest().url?.absoluteString,
-                       "https://api.randomuser.me/?results=100&seed=xmoba")
-
+        XCTAssertEqual(getPersons(0).resolveURLRequest().url?.absoluteString,
+                       "https://api.randomuser.me/?results=10&page=0&seed=xmoba")
 
     }
 
@@ -79,12 +78,12 @@ class UTAPIManager: XCTestCase {
 
     }
 
-    func testGetPersons() {
+    func testGetPersons_Page1() {
         let asyncExpectation = expectation(description: "\(#function)")
 
-        APIManager().getPersons(page: 0, onSucceed: { restResponse in
+        APIManager().getPersons(page: 1, onSucceed: { restResponse in
 
-            guard restResponse.results.count ==  100 else {
+            guard restResponse.results.count ==  10 else {
                 XCTFail()
                 asyncExpectation.fulfill()
                 return
@@ -98,6 +97,36 @@ class UTAPIManager: XCTestCase {
             XCTAssertEqual(restResponse.results[0].location.coordinates.latitude, "-30.8785")
             XCTAssertEqual(restResponse.results[0].location.coordinates.longitude, "-76.7378")
             XCTAssertEqual(restResponse.results[0].picture.thumbnail, "https://randomuser.me/api/portraits/thumb/men/8.jpg")
+
+            asyncExpectation.fulfill()
+        }, onFailed: { _ in
+            XCTFail()
+            asyncExpectation.fulfill()
+        })
+
+        self.waitForExpectations(timeout: self.timeout, handler: nil)
+
+    }
+
+    func testGetPersons_Page2() {
+        let asyncExpectation = expectation(description: "\(#function)")
+
+        APIManager().getPersons(page: 2, onSucceed: { restResponse in
+
+            guard restResponse.results.count ==  10 else {
+                XCTFail()
+                asyncExpectation.fulfill()
+                return
+            }
+
+            XCTAssertEqual(restResponse.results[0].email, "salma.dacruz@example.com")
+            XCTAssertEqual(restResponse.results[0].location.city, "francisco morato")
+            XCTAssertEqual(restResponse.results[0].name.title, "mr")
+            XCTAssertEqual(restResponse.results[0].name.first, "salma")
+            XCTAssertEqual(restResponse.results[0].name.last, "da cruz")
+            XCTAssertEqual(restResponse.results[0].location.coordinates.latitude, "-69.3963")
+            XCTAssertEqual(restResponse.results[0].location.coordinates.longitude, "-54.5418")
+            XCTAssertEqual(restResponse.results[0].picture.thumbnail, "https://randomuser.me/api/portraits/thumb/men/25.jpg")
 
             asyncExpectation.fulfill()
         }, onFailed: { _ in

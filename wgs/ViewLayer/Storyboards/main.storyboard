@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--People List Presenter-->
+        <scene sceneID="0NG-AU-HEA">
+            <objects>
+                <viewController storyboardIdentifier="PeopleListPresenter" id="X1y-5H-bxy" customClass="PeopleListPresenter" customModule="wgs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IgV-Y6-lO2">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SyQ-Q1-t9j" customClass="PeopleListView" customModule="wgs" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PeopleListTVC" id="hNP-Nm-08I" customClass="PeopleListTVC" customModule="wgs" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hNP-Nm-08I" id="VNd-Yk-XQn">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="KsW-PE-P1w">
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="RRi-DU-WfR" firstAttribute="trailing" secondItem="SyQ-Q1-t9j" secondAttribute="trailing" id="4kx-a4-VZi"/>
+                            <constraint firstItem="RRi-DU-WfR" firstAttribute="bottom" secondItem="SyQ-Q1-t9j" secondAttribute="bottom" id="Bvg-vO-qo6"/>
+                            <constraint firstItem="KsW-PE-P1w" firstAttribute="centerX" secondItem="IgV-Y6-lO2" secondAttribute="centerX" id="bFz-3v-5Nh"/>
+                            <constraint firstItem="KsW-PE-P1w" firstAttribute="centerY" secondItem="IgV-Y6-lO2" secondAttribute="centerY" id="cRl-7W-BGh"/>
+                            <constraint firstItem="SyQ-Q1-t9j" firstAttribute="top" secondItem="RRi-DU-WfR" secondAttribute="top" id="hC5-Lx-PYB"/>
+                            <constraint firstItem="SyQ-Q1-t9j" firstAttribute="leading" secondItem="RRi-DU-WfR" secondAttribute="leading" id="umv-Xj-bdJ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="RRi-DU-WfR"/>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="KsW-PE-P1w" id="0vC-Il-gWY"/>
+                        <outlet property="peopleListView" destination="SyQ-Q1-t9j" id="g5T-CF-7DT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J1g-lW-ihT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1330" y="3"/>
+        </scene>
+    </scenes>
+</document>

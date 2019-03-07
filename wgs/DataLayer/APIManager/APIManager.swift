@@ -13,11 +13,12 @@ class APIManager {
 
     // MARK: - Router
     enum APIRouter: URLRequestConvertible {
-        case getPersons
+        case getPersons(Int)
 
         static let host = "api.randomuser.me"
         static let scheme = "https"
         static let baseURLString =  scheme + "://" + host
+        static let limitPage:Int = 10
 
         var method: Alamofire.HTTPMethod {
             switch self {
@@ -46,16 +47,17 @@ class APIManager {
             urlRequest.httpMethod = method.rawValue
 
             switch self {
-            case .getPersons: return buildURLRequest()
+            case .getPersons(let page): return buildURLRequest(page: page)
             }
         }
 
-        fileprivate func buildURLRequest() -> URLRequest {
+        fileprivate func buildURLRequest(page:Int) -> URLRequest {
             var urlComponents = URLComponents()
             urlComponents.scheme = APIRouter.scheme
             urlComponents.host = APIRouter.host
             urlComponents.path = path
-            urlComponents.queryItems = [URLQueryItem(name: "results", value: "100"),
+            urlComponents.queryItems = [URLQueryItem(name: "results", value: "\(APIRouter.limitPage)"),
+                                        URLQueryItem(name: "page", value: "\(page)"),
                                         URLQueryItem(name: "seed", value: "xmoba")]
 
             var urlRequest = URLRequest(url: urlComponents.url  ?? URL(fileURLWithPath: ""))
@@ -85,7 +87,7 @@ class APIManager {
                   onSucceed: @escaping ((RestResponse) -> Void),
                   onFailed: @escaping ((ResponseCode) -> Void)) {
 
-        self.injectedRestClient.perform(request: APIRouter.getPersons,
+        self.injectedRestClient.perform(request: APIRouter.getPersons(page),
                            success: { response in
                             onSucceed(response)
         }, failure: { responseCode in

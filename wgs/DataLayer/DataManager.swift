@@ -7,20 +7,65 @@
 //
 
 import Foundation
-import SDWebImage
 
 final class DataManager {
 
-    // MARK: - Service helpers
+    // MARK: - Constants
 
+
+    static let shared:DataManager = DataManager()
+
+    // MARK: - Private attributes
+    private static let indexFirstPage = 1
+    private var personsListPage:Int = indexFirstPage
+
+    // MARK: - Injected attributes
     private var injectedAPIManager:APIManager = APIManager()
+    private var injectedDatabaseManager:DatabaseManager = DatabaseManager.shared
 
-    init(npsAPIManager:APIManager = APIManager()) {
-        self.injectedAPIManager = npsAPIManager
+    init(apiManager:APIManager = APIManager(),
+         databaseManager:DatabaseManager = DatabaseManager.shared) {
+        
+        self.injectedAPIManager = apiManager
+        self.injectedDatabaseManager = databaseManager
     }
 
-    // MARK: - Service helpers
+    // MARK:
+    func getFirst(onSucceed : @escaping (([Person]) -> Void),
+                  onFailed: @escaping ((ResponseCode) -> Void)) {
+        self.personsListPage = DataManager.indexFirstPage
+        //self.persons = []
+        self.injectedDatabaseManager.removeAllPersons()
+        injectedAPIManager.getPersons(page: self.personsListPage, onSucceed: { [weak self] npsRestResponse in
+            guard let weakSelf = self else { return }
+            weakSelf.personsListPage += 1
+           // weakSelf.persons.append(contentsOf: npsRestResponse.results)
+           // onSucceed(weakSelf.persons)
+            weakSelf.injectedDatabaseManager.add(persons: npsRestResponse.results.map({ Person(personAPI: $0)}))
+            onSucceed(weakSelf.injectedDatabaseManager.getPersons())
+            }, onFailed: { responseCode in
+                onFailed(responseCode)
+        })
+    }
 
+    func getNext(onSucceed : @escaping (([Person]) -> Void),
+                 onFailed: @escaping ((ResponseCode) -> Void)) {
+        guard self.personsListPage > 0 else {
+            self.getFirst(onSucceed: onSucceed, onFailed: onFailed)
+            return
+        }
+
+        injectedAPIManager.getPersons(page: self.personsListPage, onSucceed: { [weak self] npsRestResponse in
+            guard let weakSelf = self else { return }
+            weakSelf.personsListPage += 1
+           // weakSelf.persons.append(contentsOf: npsRestResponse.results)
+            //onSucceed(weakSelf.persons)
+            weakSelf.injectedDatabaseManager.add(persons: npsRestResponse.results.map({ Person(personAPI: $0)}))
+            onSucceed(weakSelf.injectedDatabaseManager.getPersons())
+            }, onFailed: { responseCode in
+                onFailed(responseCode)
+        })
+    }
 
 
 }
@@ -28,8 +73,7 @@ final class DataManager {
 extension DataManager: Resetable {
     func reset() {
         self.injectedAPIManager = APIManager()
-
-        SDImageCache.shared().clearMemory()
-        SDImageCache.shared().clearDisk()
+        self.injectedDatabaseManager.reset()
+        self.personsListPage = DataManager.indexFirstPage
     }
 }

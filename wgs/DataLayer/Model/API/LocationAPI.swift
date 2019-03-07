@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-struct Location {
+struct LocationAPI {
 
     struct  JSONAttributeKey {
         static let city = "city"
@@ -18,10 +18,10 @@ struct Location {
 
     // MARK: - Public attributes
     var city:String = ""
-    var coordinates:Coordinates = Coordinates()
+    var coordinates:CoordinatesAPI = CoordinatesAPI()
 }
 
-extension Location:Decodable {
+extension LocationAPI:Decodable {
     enum LocationKeys: String, CodingKey {
         case city = "city"
         case coordinates = "coordinates"
@@ -30,7 +30,7 @@ extension Location:Decodable {
     init(from decoder:Decoder) throws {
         let container = try decoder.container(keyedBy: LocationKeys.self)
         let city = try container.decode(String.self, forKey: .city)
-        let coordinates  = try container.decode(Coordinates.self, forKey: .coordinates)
+        let coordinates  = try container.decode(CoordinatesAPI.self, forKey: .coordinates)
 
         self.init(city: city, coordinates: coordinates)
     }

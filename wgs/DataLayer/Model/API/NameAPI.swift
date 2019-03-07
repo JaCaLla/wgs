@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-struct Name {
+struct NameAPI {
 
     struct  JSONAttributeKey {
         static let title = "title"
@@ -23,7 +23,7 @@ struct Name {
     var last:String = ""
 }
 
-extension Name:Decodable {
+extension NameAPI:Decodable {
     enum NameKeys: String, CodingKey {
         case title = "title"
         case first = "first"
