@@ -20,10 +20,23 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>Profile Picker  requires access to your phone’s camera.</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>GothamRounded-Bold.otf</string>
+		<string>GothamRounded-BoldItalic.otf</string>
+		<string>GothamRounded-Book.otf</string>
+		<string>GothamRounded-BookItalic.otf</string>
+		<string>GothamRounded-Light.otf</string>
+		<string>GothamRounded-LightItalic.otf</string>
+		<string>GothamRounded-Medium.otf</string>
+		<string>GothamRounded-MediumItalic.otf</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
-	<string>Main</string>
+	<string>main</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
@@ -41,18 +54,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-    <key>NSCameraUsageDescription</key>
-    <string>Profile Picker  requires access to your phone’s camera.</string>
-    <key>UIAppFonts</key>
-    <array>
-        <string>GothamRounded-Bold.otf</string>
-        <string>GothamRounded-BoldItalic.otf</string>
-        <string>GothamRounded-Book.otf</string>
-        <string>GothamRounded-BookItalic.otf</string>
-        <string>GothamRounded-Light.otf</string>
-        <string>GothamRounded-LightItalic.otf</string>
-        <string>GothamRounded-Medium.otf</string>
-        <string>GothamRounded-MediumItalic.otf</string>
-    </array>
 </dict>
 </plist>

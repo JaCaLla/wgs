@@ -119,14 +119,21 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.storyboard` struct is generated, and contains static references to 1 storyboards.
+  /// This `R.storyboard` struct is generated, and contains static references to 2 storyboards.
   struct storyboard {
     /// Storyboard `LaunchScreen`.
     static let launchScreen = _R.storyboard.launchScreen()
+    /// Storyboard `main`.
+    static let main = _R.storyboard.main()
     
     /// `UIStoryboard(name: "LaunchScreen", bundle: ...)`
     static func launchScreen(_: Void = ()) -> UIKit.UIStoryboard {
       return UIKit.UIStoryboard(resource: R.storyboard.launchScreen)
+    }
+    
+    /// `UIStoryboard(name: "main", bundle: ...)`
+    static func main(_: Void = ()) -> UIKit.UIStoryboard {
+      return UIKit.UIStoryboard(resource: R.storyboard.main)
     }
     
     fileprivate init() {}
@@ -134,7 +141,7 @@ struct R: Rswift.Validatable {
   
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizable` struct is generated, and contains static references to 15 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 16 localization keys.
     struct localizable {
       /// Value: < Back
       static let person_detail_back = Rswift.StringResource(key: "person_detail_back", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
@@ -158,6 +165,8 @@ struct R: Rswift.Validatable {
       static let person_detail_picker_ok_image = Rswift.StringResource(key: "person_detail_picker_ok_image", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: People List
       static let person_list_title = Rswift.StringResource(key: "person_list_title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Person Detail
+      static let person_list_detail = Rswift.StringResource(key: "person_list_detail", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Warning
       static let person_detail_picker_warning_image = Rswift.StringResource(key: "person_detail_picker_warning_image", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: You don't have camera
@@ -222,6 +231,11 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("person_list_title", bundle: R.hostingBundle, comment: "")
       }
       
+      /// Value: Person Detail
+      static func person_list_detail(_: Void = ()) -> String {
+        return NSLocalizedString("person_list_detail", bundle: R.hostingBundle, comment: "")
+      }
+      
       /// Value: Warning
       static func person_detail_picker_warning_image(_: Void = ()) -> String {
         return NSLocalizedString("person_detail_picker_warning_image", bundle: R.hostingBundle, comment: "")
@@ -269,6 +283,7 @@ struct _R: Rswift.Validatable {
   struct storyboard: Rswift.Validatable {
     static func validate() throws {
       try launchScreen.validate()
+      try main.validate()
     }
     
     struct launchScreen: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
@@ -280,6 +295,32 @@ struct _R: Rswift.Validatable {
       static func validate() throws {
         if #available(iOS 11.0, *) {
         }
+      }
+      
+      fileprivate init() {}
+    }
+    
+    struct main: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
+      typealias InitialController = PeopleListPresenter
+      
+      let bundle = R.hostingBundle
+      let name = "main"
+      let peopleListPresenter = StoryboardViewControllerResource<PeopleListPresenter>(identifier: "PeopleListPresenter")
+      let personDetailPresenter = StoryboardViewControllerResource<PersonDetailPresenter>(identifier: "PersonDetailPresenter")
+      
+      func peopleListPresenter(_: Void = ()) -> PeopleListPresenter? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: peopleListPresenter)
+      }
+      
+      func personDetailPresenter(_: Void = ()) -> PersonDetailPresenter? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: personDetailPresenter)
+      }
+      
+      static func validate() throws {
+        if #available(iOS 11.0, *) {
+        }
+        if _R.storyboard.main().peopleListPresenter() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'peopleListPresenter' could not be loaded from storyboard 'main' as 'PeopleListPresenter'.") }
+        if _R.storyboard.main().personDetailPresenter() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'personDetailPresenter' could not be loaded from storyboard 'main' as 'PersonDetailPresenter'.") }
       }
       
       fileprivate init() {}

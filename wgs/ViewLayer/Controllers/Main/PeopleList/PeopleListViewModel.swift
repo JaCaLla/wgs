@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CocoaLumberjack
 
 enum PeopleListViewModelState: RawRepresentable {
     case initial
@@ -55,7 +56,6 @@ class PeopleListViewModel {
     var onStateChanged: ((PeopleListViewModelState) -> Void) = { _ in /* Default empty state */ }
     
     // MARK: - Private attributes
-
     var injectedPeopleUseCase = PeopleUseCase()
 
     init(peopleUseCase:PeopleUseCase = PeopleUseCase()) {
@@ -70,8 +70,8 @@ class PeopleListViewModel {
                 return
             }
             weakSelf.onStateChanged(.fetched(persons))
-        }, onFailed: { _ in
-            // TODO: Handle error
+        }, onFailed: { error in
+            DDLogError("ERROR: Fetching first people page (\(error))")
         })
     }
 
@@ -86,8 +86,8 @@ class PeopleListViewModel {
                 return
             }
             weakSelf.onStateChanged(.fetched(people))
-            }, onFailed: { _ in
-                // TODO: Handle error
+            }, onFailed: { error in
+            DDLogError("ERROR: Fetching people page (\(error))")
         })
     }
 

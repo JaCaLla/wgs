@@ -46,8 +46,6 @@ class PersonDetailPresenter: UIViewController {
 
     // MARK: - IBOutlets
     @IBOutlet weak var personDetailView: PersonDetailView!
-    var imagePicker = UIImagePickerController()
-
 
     // MARK: - Callbacks
     var onDismiss: () -> Void = { /* Default empty block */ }
@@ -56,7 +54,7 @@ class PersonDetailPresenter: UIViewController {
     private var person:Person = Person()
     private var personDetailPresenterMode:PersonDetailPresenterMode = .edit
     private let button = UIButton.init(type: .custom)
-
+    private var imagePicker = UIImagePickerController()
     private var attributeUpdated:PersonDetailAttributesUpdated = PersonDetailAttributesUpdated()
 
     // MARK: - Constructor/Initializer
@@ -76,6 +74,7 @@ class PersonDetailPresenter: UIViewController {
     // MARK: - Private methods
     private func setupPresenter(person:Person) {
 
+        self.title = R.string.localizable.person_list_detail.key.localized
         self.view.backgroundColor = AppColors.PersonDetail.Background
 
         personDetailView.person = person
@@ -114,7 +113,7 @@ class PersonDetailPresenter: UIViewController {
     }
 
     @objc func onRightButtonAction(sender: UIButton!) {
-        // self.dismiss(animated: true, completion: nil)
+
         switch personDetailPresenterMode {
         case .edit:
             personDetailPresenterMode = .save

@@ -1,5 +1,6 @@
 "person_list_title" = "People List";
 
+"person_list_detail" = "Person Detail";
 "person_detail_email" = "email";
 "person_detail_first" = "first";
 "person_detail_edit" = "Edit";
