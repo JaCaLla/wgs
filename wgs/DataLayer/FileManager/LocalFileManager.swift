@@ -8,15 +8,9 @@
 
 import Foundation
 import UIKit
+import CocoaLumberjack
 
 final class LocalFileManager {
-
-    // MARK: - Constants
-    struct NotificationId {
-        static let deletedPerson = "DataManager.deletedPerson"
-        static let updatedPerson = "DataManager.updatedPerson"
-    }
-
 
     static let shared:LocalFileManager = LocalFileManager()
 
@@ -50,8 +44,6 @@ final class LocalFileManager {
 
     }
 
-
-
     func loadImageFromDiskWith(fileName: String) -> UIImage? {
 
         let documentDirectory = FileManager.SearchPathDirectory.documentDirectory
@@ -81,7 +73,25 @@ final class LocalFileManager {
                     try FileManager.default.removeItem(at: fileURL)
               //  }
             }
-        } catch  { print(error) }
+        } catch  {
+            print(error)
+        }
+    }
+
+    func remove(filename:String) {
+        let documentDirectory = FileManager.SearchPathDirectory.documentDirectory
+
+        let userDomainMask = FileManager.SearchPathDomainMask.userDomainMask
+        let paths = NSSearchPathForDirectoriesInDomains(documentDirectory, userDomainMask, true)
+
+        do {
+            if let dirPath = paths.first {
+                let imageUrl = URL(fileURLWithPath: dirPath).appendingPathComponent(filename)
+                try FileManager.default.removeItem(at: imageUrl)
+            }
+        } catch {
+            DDLogError("ERROR: File not found")
+        }
     }
 
     func count() -> Int {
@@ -92,9 +102,11 @@ final class LocalFileManager {
                                                                        includingPropertiesForKeys: nil,
                                                                        options: [.skipsHiddenFiles, .skipsSubdirectoryDescendants])
             return fileURLs.count
-        } catch  { print(error) }
-
-        return -1
+        } catch  {
+            DDLogError("ERROR: Failed image count")
+            return 0
+        }
+        return 0
     }
 }
 

@@ -37,14 +37,14 @@ class MainFlowCoordinator {
     }
 
     private func presentDetails(person:Person) {
-        let personDetailPresenter:PersonDetailPresenter = PersonDetailPresenter.instantiate(person: person)
+        
+        let personDetailViewModel = PersonDetailViewModel(person:person)
+        let personDetailPresenter:PersonDetailPresenter = PersonDetailPresenter.instantiate(personDetailViewModel: personDetailViewModel)
         personDetailPresenter.onDismiss = { [weak self]  in
             guard let weakSelf = self else { return }
             weakSelf.mainFlowNavigationController.popViewController(animated: true)
         }
-
         mainFlowNavigationController.pushViewController(personDetailPresenter, animated: true)
-
     }
 
 }

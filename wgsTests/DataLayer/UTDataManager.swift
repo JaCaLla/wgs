@@ -186,11 +186,52 @@ class UTDataManager: XCTestCase {
             LocalFileManager.shared.reset()
             XCTAssertNil(updatedPerson.getImage())
 
-            
              asyncExpectation.fulfill()
         })
          self.waitForExpectations(timeout: self.timeout, handler: nil)
     }
+
+    func test_removePerson_WithoutImage() {
+        XCTAssertEqual(DatabaseManager.shared.getPersons().count, 0)
+
+        let person1 = Person(email: "a", first: "b", latitude: "c", longitude: "d", thumbnail: "e" ,large: "f",image: nil)
+
+        let asyncExpectation = expectation(description: "\(#function)")
+
+        DatabaseManager.shared.add(person: person1, onComplete: {
+            XCTAssertEqual(DatabaseManager.shared.getPersons().count, 1)
+            DatabaseManager.shared.remove(person: person1, onComplete: {
+                XCTAssertEqual(DatabaseManager.shared.getPersons().count, 0)
+                XCTAssertEqual(LocalFileManager.shared.count(), 0)
+                asyncExpectation.fulfill()
+            })
+        })
+
+        self.waitForExpectations(timeout: self.timeout, handler: nil)
+    }
+
+    func test_removePerson_WithImage() {
+        XCTAssertEqual(DatabaseManager.shared.getPersons().count, 0)
+
+        let person1 = Person(email: "a", first: "b", latitude: "c", longitude: "d", thumbnail: "e" ,large: "f",image: nil)
+        var person2 = Person(email: "1", first: "2", latitude: "3", longitude: "4", thumbnail: "5", large: "6", image: nil)
+        person2.set(image: R.image.default_profile()!)
+
+        DataManager.shared.update(oldPerson: person1, newPerson: person2)
+        XCTAssertEqual(LocalFileManager.shared.count(), 1)
+
+        let asyncExpectation = expectation(description: "\(#function)")
+
+            DataManager.shared.remove(person: person1, onComplete: {
+                XCTAssertEqual(DatabaseManager.shared.getPersons().count, 0)
+                XCTAssertEqual(LocalFileManager.shared.count(), 0)
+                asyncExpectation.fulfill()
+            })
+
+        self.waitForExpectations(timeout: self.timeout, handler: nil)
+    }
+
+
 
     func test_fetchAPI_WhenDBHasData() {
 

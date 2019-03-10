@@ -8,13 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		130891847D8F7A6543FDD2E6 /* Pods_wgsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 998A309E6A82A5D947FBA41B /* Pods_wgsTests.framework */; };
+		BF0E3DED22351BAC0051ADDF /* PersonDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0E3DEC22351BAC0051ADDF /* PersonDetailViewModel.swift */; };
+		BF0E3DF222354EE80051ADDF /* UTPersonDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0E3DF122354EE80051ADDF /* UTPersonDetailViewModel.swift */; };
 		BF3DD2CD22304EBF00489FBA /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3DD2CA22304EBF00489FBA /* APIManager.swift */; };
 		BF3DD2CE22304EBF00489FBA /* APIRestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3DD2CB22304EBF00489FBA /* APIRestClient.swift */; };
 		BF3DD2CF22304EBF00489FBA /* RestResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3DD2CC22304EBF00489FBA /* RestResponse.swift */; };
 		BF3DD2D722304F7C00489FBA /* Resetable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3DD2D622304F7C00489FBA /* Resetable.swift */; };
 		BF3DD2DB2230511800489FBA /* UTAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3DD2DA2230511800489FBA /* UTAPIManager.swift */; };
 		BF43411D22304840009BB87C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF43411C22304840009BB87C /* AppDelegate.swift */; };
-		BF43411F22304840009BB87C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF43411E22304840009BB87C /* ViewController.swift */; };
 		BF43412422304841009BB87C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF43412322304841009BB87C /* Assets.xcassets */; };
 		BF43412722304841009BB87C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF43412522304841009BB87C /* LaunchScreen.storyboard */; };
 		BF63697A223127AE003D5D7B /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF636979223127AE003D5D7B /* DatabaseManager.swift */; };
@@ -65,6 +66,7 @@
 		BF85FF9D22334727009C7F8F /* GothamRounded-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = BF85FF9622333CEF009C7F8F /* GothamRounded-Medium.otf */; };
 		BF85FF9E22334727009C7F8F /* GothamRounded-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = BF85FF9422333CEE009C7F8F /* GothamRounded-MediumItalic.otf */; };
 		BF85FFA222345A69009C7F8F /* UTPeopleUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF85FFA122345A69009C7F8F /* UTPeopleUseCase.swift */; };
+		BF9A198722357C040081D435 /* UTPeopleListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9A198622357C040081D435 /* UTPeopleListViewModel.swift */; };
 		BFF9108122305EED000BA87A /* MockAPIRestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF9107F22305EED000BA87A /* MockAPIRestClient.swift */; };
 		BFF9108222305EED000BA87A /* MockAPIManagerWrongUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF9108022305EED000BA87A /* MockAPIManagerWrongUrl.swift */; };
 		BFF910F422306E0C000BA87A /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF910F322306E0C000BA87A /* DataManager.swift */; };
@@ -87,6 +89,8 @@
 		6BD5B6C2F5A6F80E0B5F619E /* Pods-wgs.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wgs.release.xcconfig"; path = "Pods/Target Support Files/Pods-wgs/Pods-wgs.release.xcconfig"; sourceTree = "<group>"; };
 		72B382A2691A101626BB2D31 /* Pods-wgsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wgsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-wgsTests/Pods-wgsTests.release.xcconfig"; sourceTree = "<group>"; };
 		998A309E6A82A5D947FBA41B /* Pods_wgsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wgsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF0E3DEC22351BAC0051ADDF /* PersonDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailViewModel.swift; sourceTree = "<group>"; };
+		BF0E3DF122354EE80051ADDF /* UTPersonDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UTPersonDetailViewModel.swift; sourceTree = "<group>"; };
 		BF3DD2CA22304EBF00489FBA /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		BF3DD2CB22304EBF00489FBA /* APIRestClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRestClient.swift; sourceTree = "<group>"; };
 		BF3DD2CC22304EBF00489FBA /* RestResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestResponse.swift; sourceTree = "<group>"; };
@@ -94,7 +98,6 @@
 		BF3DD2DA2230511800489FBA /* UTAPIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UTAPIManager.swift; sourceTree = "<group>"; };
 		BF43411922304840009BB87C /* wgs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wgs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF43411C22304840009BB87C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BF43411E22304840009BB87C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BF43412322304841009BB87C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF43412622304841009BB87C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BF43412822304841009BB87C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -148,6 +151,7 @@
 		BF85FF9522333CEF009C7F8F /* GothamRounded-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GothamRounded-BoldItalic.otf"; sourceTree = "<group>"; };
 		BF85FF9622333CEF009C7F8F /* GothamRounded-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GothamRounded-Medium.otf"; sourceTree = "<group>"; };
 		BF85FFA122345A69009C7F8F /* UTPeopleUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UTPeopleUseCase.swift; sourceTree = "<group>"; };
+		BF9A198622357C040081D435 /* UTPeopleListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UTPeopleListViewModel.swift; sourceTree = "<group>"; };
 		BFF9107F22305EED000BA87A /* MockAPIRestClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockAPIRestClient.swift; sourceTree = "<group>"; };
 		BFF9108022305EED000BA87A /* MockAPIManagerWrongUrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockAPIManagerWrongUrl.swift; sourceTree = "<group>"; };
 		BFF910F322306E0C000BA87A /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
@@ -181,6 +185,31 @@
 				998A309E6A82A5D947FBA41B /* Pods_wgsTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BF0E3DEE22354E9A0051ADDF /* ViewLayer */ = {
+			isa = PBXGroup;
+			children = (
+				BF0E3DEF22354EA70051ADDF /* Controllers */,
+			);
+			path = ViewLayer;
+			sourceTree = "<group>";
+		};
+		BF0E3DEF22354EA70051ADDF /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BF9A198522357BD40081D435 /* PeopleList */,
+				BF0E3DF022354EB70051ADDF /* PersonDetail */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		BF0E3DF022354EB70051ADDF /* PersonDetail */ = {
+			isa = PBXGroup;
+			children = (
+				BF0E3DF122354EE80051ADDF /* UTPersonDetailViewModel.swift */,
+			);
+			path = PersonDetail;
 			sourceTree = "<group>";
 		};
 		BF3DD2C822304DD400489FBA /* DataLayer */ = {
@@ -274,8 +303,6 @@
 				BF73B15622307E150019D51A /* DomainLayer */,
 				BF3DD2C822304DD400489FBA /* DataLayer */,
 				BF43411C22304840009BB87C /* AppDelegate.swift */,
-				BF43411E22304840009BB87C /* ViewController.swift */,
-				BF43412522304841009BB87C /* LaunchScreen.storyboard */,
 				BF43412822304841009BB87C /* Info.plist */,
 			);
 			path = wgs;
@@ -284,6 +311,7 @@
 		BF43413022304842009BB87C /* wgsTests */ = {
 			isa = PBXGroup;
 			children = (
+				BF0E3DEE22354E9A0051ADDF /* ViewLayer */,
 				BF85FF9F22345A1C009C7F8F /* Domain */,
 				BF3DD2D8223050EB00489FBA /* DataLayer */,
 				BF43413322304842009BB87C /* Info.plist */,
@@ -334,6 +362,7 @@
 			children = (
 				BF63699722316DE0003D5D7B /* Views */,
 				BF63699522316CDF003D5D7B /* PersonDetailPresenter.swift */,
+				BF0E3DEC22351BAC0051ADDF /* PersonDetailViewModel.swift */,
 			);
 			path = PersonDetail;
 			sourceTree = "<group>";
@@ -379,6 +408,7 @@
 			children = (
 				BF73B15322307D930019D51A /* AppStoryboard.swift */,
 				BF73B15222307D930019D51A /* main.storyboard */,
+				BF43412522304841009BB87C /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -542,6 +572,14 @@
 				BF85FFA122345A69009C7F8F /* UTPeopleUseCase.swift */,
 			);
 			path = UseCases;
+			sourceTree = "<group>";
+		};
+		BF9A198522357BD40081D435 /* PeopleList */ = {
+			isa = PBXGroup;
+			children = (
+				BF9A198622357C040081D435 /* UTPeopleListViewModel.swift */,
+			);
+			path = PeopleList;
 			sourceTree = "<group>";
 		};
 		BFF9107E22305EED000BA87A /* Mock */ = {
@@ -805,11 +843,11 @@
 				BF6369A322318D8D003D5D7B /* MapPersonTVC.swift in Sources */,
 				BF85FF8C22333C9B009C7F8F /* AppColors.swift in Sources */,
 				BF63699222315AA6003D5D7B /* PersonAPI.swift in Sources */,
-				BF43411F22304840009BB87C /* ViewController.swift in Sources */,
 				BF63699122315AA6003D5D7B /* NameAPI.swift in Sources */,
 				BF73B171223089600019D51A /* PeopleListViewModel.swift in Sources */,
 				BF85FF8622328487009C7F8F /* PersonEntity.swift in Sources */,
 				BF73B15922307E590019D51A /* StartUpAppSequencer.swift in Sources */,
+				BF0E3DED22351BAC0051ADDF /* PersonDetailViewModel.swift in Sources */,
 				BF73B15E22307ECD0019D51A /* ConcurrentOperation.swift in Sources */,
 				BF85FF882232F206009C7F8F /* RealmConfig.swift in Sources */,
 				BF3DD2D722304F7C00489FBA /* Resetable.swift in Sources */,
@@ -850,10 +888,12 @@
 				BFF9108122305EED000BA87A /* MockAPIRestClient.swift in Sources */,
 				BF63698222313544003D5D7B /* UTPerson.swift in Sources */,
 				BF63698422313D0C003D5D7B /* UTDataManager.swift in Sources */,
+				BF0E3DF222354EE80051ADDF /* UTPersonDetailViewModel.swift in Sources */,
 				BF85FFA222345A69009C7F8F /* UTPeopleUseCase.swift in Sources */,
 				BF85FF7F22326FCD009C7F8F /* UTConfigurationManager.swift in Sources */,
 				BF3DD2DB2230511800489FBA /* UTAPIManager.swift in Sources */,
 				BFF9108222305EED000BA87A /* MockAPIManagerWrongUrl.swift in Sources */,
+				BF9A198722357C040081D435 /* UTPeopleListViewModel.swift in Sources */,
 				BF6369AB22324F25003D5D7B /* UTLocalFileManager.swift in Sources */,
 				BF63698722314911003D5D7B /* UTDatabaseManager.swift in Sources */,
 			);

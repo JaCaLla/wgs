@@ -13,7 +13,6 @@ class UTLocalFileManager: XCTestCase {
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         LocalFileManager.shared.reset()
-        
     }
 
     override func tearDown() {
@@ -28,18 +27,22 @@ class UTLocalFileManager: XCTestCase {
         // Look out!!!!
         // During storage images is processed to reduce its weight, so it is necessary store 
         LocalFileManager.shared.saveImage(imageName: "patata", image: image)
-        guard  LocalFileManager.shared.loadImageFromDiskWith(fileName: "patata") != nil else {XCTFail(); return}
+        XCTAssertNotNil(LocalFileManager.shared.loadImageFromDiskWith(fileName: "patata"))
 
         LocalFileManager.shared.reset()
-         guard  LocalFileManager.shared.loadImageFromDiskWith(fileName: "patata") === nil else {XCTFail(); return}
-
+         XCTAssertNil(LocalFileManager.shared.loadImageFromDiskWith(fileName: "patata"))
     }
 
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func test_removeImage() {
+        guard let image = R.image.default_profile() else {XCTFail(); return}
+
+        // Look out!!!!
+        // During storage images is processed to reduce its weight, so it is necessary store
+        LocalFileManager.shared.saveImage(imageName: "patata", image: image)
+         XCTAssertNotNil(LocalFileManager.shared.loadImageFromDiskWith(fileName: "patata"))
+
+        LocalFileManager.shared.remove(filename: "patata")
+         XCTAssertNil(LocalFileManager.shared.loadImageFromDiskWith(fileName: "patata"))
     }
 
 }

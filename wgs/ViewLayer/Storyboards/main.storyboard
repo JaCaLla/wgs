@@ -217,17 +217,25 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Yr2-4f-YX2">
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Yr2-4f-YX2" firstAttribute="centerX" secondItem="wc3-bo-LtX" secondAttribute="centerX" id="FgN-BJ-2OY"/>
                             <constraint firstItem="WYL-L4-DKH" firstAttribute="top" secondItem="BVR-in-h9r" secondAttribute="top" id="LhW-4s-E6W"/>
+                            <constraint firstItem="WYL-L4-DKH" firstAttribute="centerY" secondItem="wc3-bo-LtX" secondAttribute="centerY" id="VAV-rw-bkG"/>
                             <constraint firstItem="BVR-in-h9r" firstAttribute="trailing" secondItem="WYL-L4-DKH" secondAttribute="trailing" id="Zdq-LZ-ZSF"/>
+                            <constraint firstItem="WYL-L4-DKH" firstAttribute="centerX" secondItem="wc3-bo-LtX" secondAttribute="centerX" id="adX-Hp-c9P"/>
+                            <constraint firstItem="Yr2-4f-YX2" firstAttribute="centerY" secondItem="wc3-bo-LtX" secondAttribute="centerY" id="bpT-Eh-XlD"/>
                             <constraint firstItem="BVR-in-h9r" firstAttribute="bottom" secondItem="WYL-L4-DKH" secondAttribute="bottom" id="fzA-ic-fQM"/>
                             <constraint firstItem="WYL-L4-DKH" firstAttribute="leading" secondItem="BVR-in-h9r" secondAttribute="leading" id="xj0-Kc-vVN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BVR-in-h9r"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="Yr2-4f-YX2" id="mVo-pw-g7I"/>
                         <outlet property="personDetailView" destination="WYL-L4-DKH" id="txw-DO-8Kn"/>
                     </connections>
                 </viewController>

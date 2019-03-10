@@ -83,7 +83,9 @@ final class DataManager {
     }
 
     func remove(person:Person, onComplete: () -> Void = {/* Default empty block*/}) {
+    
        injectedDatabaseManager.remove(person: person)
+        injectedLocalFileManager.remove(filename: person.getImageName() ?? "")
 
         let notificationCenter = NotificationCenter.default
         notificationCenter.post(name: NSNotification.Name(rawValue: DataManager.NotificationId.deletedPerson),

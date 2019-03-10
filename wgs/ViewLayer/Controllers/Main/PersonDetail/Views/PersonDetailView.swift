@@ -60,7 +60,7 @@ enum PersonDetailViewOptions : Int {
         case .deleteAction:
             guard let actionPersonTVC:ActionPersonTVC = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.actionPersonTVC.identifier) as? ActionPersonTVC else { return UITableViewCell() }
             actionPersonTVC.onDeleteAction = { 
-                personDetailView.onDeleteAction(person)
+                personDetailView.onDeleteAction()
             }
             return actionPersonTVC
         }
@@ -80,7 +80,7 @@ class PersonDetailView: UITableView {
     // MARK: - Callbacks
     var onEmailValueChanged: (String) -> Void = { _ in /* Default empty block*/}
     var onFirstValueChanged: (String) -> Void = { _ in /* Default empty block*/}
-    var onDeleteAction: (Person) -> Void = { _ in /* Default empty block*/}
+    var onDeleteAction: () -> Void = { /* Default empty block*/}
     var onImageUpdate: () -> Void = { /* Default empty block*/ }
 
     // MARK : - Public attributes

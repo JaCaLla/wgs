@@ -8,156 +8,129 @@
 
 import UIKit
 
-enum PersonDetailPresenterMode: Int {
-    case edit
-    case save
-
-    func getTitleRightButton() -> String {
-        switch self {
-        case .edit: return R.string.localizable.person_detail_edit.key.localized
-        case .save: return R.string.localizable.person_detail_save.key.localized
-        }
-    }
-
-    func getTitleLeftButton() -> String {
-        switch self {
-        case .edit: return R.string.localizable.person_detail_back.key.localized
-        case .save: return R.string.localizable.person_detail_cancel.key.localized
-        }
-    }
-
-    func isEdit() -> Bool { return self == .edit }
-    func isSave() -> Bool { return self == .save }
-}
-
-struct PersonDetailAttributesUpdated {
-    var newEmail:String?
-    var newFirst:String?
-    var newImage:UIImage?
-
-    func existsAttributesUpdated() -> Bool {
-        return (self.newEmail != nil ||
-            self.newFirst != nil ||
-            self.newImage != nil)
-    }
-}
-
 class PersonDetailPresenter: UIViewController {
 
     // MARK: - IBOutlets
     @IBOutlet weak var personDetailView: PersonDetailView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
     // MARK: - Callbacks
     var onDismiss: () -> Void = { /* Default empty block */ }
 
-    // MARK: - Private attributes
-    private var person:Person = Person()
-    private var personDetailPresenterMode:PersonDetailPresenterMode = .edit
     private let button = UIButton.init(type: .custom)
     private var imagePicker = UIImagePickerController()
-    private var attributeUpdated:PersonDetailAttributesUpdated = PersonDetailAttributesUpdated()
+    private var injectedViewModel:PersonDetailViewModel = PersonDetailViewModel(person: Person())
 
     // MARK: - Constructor/Initializer
-    static func instantiate(person:Person) -> PersonDetailPresenter {
+    static func instantiate(personDetailViewModel:PersonDetailViewModel) -> PersonDetailPresenter {
         let personDetailPresenter = PersonDetailPresenter.instantiate(fromAppStoryboard: .main)
-        personDetailPresenter.person = person
+       // personDetailPresenter.person = person
+        personDetailPresenter.injectedViewModel = personDetailViewModel
         return personDetailPresenter
     }
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setupPresenter(person: self.person)
-        self.refreshPresenter()
+        self.setupPresenter()//(person: self.person)
+        self.refreshNavigationBarButtons()
     }
 
     // MARK: - Private methods
-    private func setupPresenter(person:Person) {
+    private func setupPresenter() {  //(person:Person) {
 
         self.title = R.string.localizable.person_list_detail.key.localized
         self.view.backgroundColor = AppColors.PersonDetail.Background
 
-        personDetailView.person = person
+        activityIndicator.style = .whiteLarge
+        activityIndicator.isHidden = true
+
+        injectedViewModel.onStateChanged = { [weak self] personDetailViewModelState in
+            guard let weakSelf = self else { return }
+            weakSelf.refreshView(personDetailViewModelState: personDetailViewModelState)
+        }
+
+        personDetailView.person = injectedViewModel.getPerson()
         personDetailView.onFirstValueChanged = { [weak self] value in
             guard let weakSelf = self else { return }
-            weakSelf.attributeUpdated.newFirst = value
-            weakSelf.refreshPresenter()
+            //weakSelf.attributeUpdated.newFirst = value
+            weakSelf.injectedViewModel.set(newFirst: value)
+            weakSelf.refreshNavigationBarButtons()
         }
         personDetailView.onEmailValueChanged = {  [weak self] value in
             guard let weakSelf = self else { return }
-            weakSelf.attributeUpdated.newEmail = value
-            weakSelf.refreshPresenter()
+            //weakSelf.attributeUpdated.newEmail = value
+            weakSelf.injectedViewModel.set(newEmail: value)
+            weakSelf.refreshNavigationBarButtons()
         }
-        personDetailView.onDeleteAction = { person in
-            PeopleUseCase().remove(person:person, onComplete: { [weak self] in
-                guard let weakSelf = self else { return }
-                weakSelf.onDismiss()
-            })
+        personDetailView.onDeleteAction = { [weak self] in
+             guard let weakSelf = self else { return }
+            weakSelf.injectedViewModel.delete()
         }
         personDetailView.onImageUpdate = { [weak self]  in
             guard let weakSelf = self else { return }
             weakSelf.presentImagePicker()
         }
 
-        personDetailView.personDetailPresenterMode = self.personDetailPresenterMode
+        personDetailView.personDetailPresenterMode = self.injectedViewModel.getPersonDetailPresenterMode()//self.personDetailPresenterMode
 
         imagePicker.delegate = self
     }
 
-    private func refreshPresenter() {
+    private func refreshNavigationBarButtons() {
 
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: personDetailPresenterMode.getTitleRightButton(), style: .plain, target: self, action: #selector(onRightButtonAction))
-        self.navigationItem.rightBarButtonItem?.isEnabled =  personDetailPresenterMode.isEdit() ? true : self.attributeUpdated.existsAttributesUpdated()
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: personDetailPresenterMode.getTitleLeftButton(), style: .plain, target: self, action: #selector(onLeftButtonAction))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: self.injectedViewModel.getTitleRightButton(), style: .plain, target: self, action: #selector(onRightButtonAction))
+        self.navigationItem.rightBarButtonItem?.isEnabled = self.injectedViewModel.isEnabledRightButtton()
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: self.injectedViewModel.getTitleLeftButton(), style: .plain, target: self, action: #selector(onLeftButtonAction))
 
+    }
+
+    func refreshView(personDetailViewModelState:PersonDetailViewModelState) {
+        switch personDetailViewModelState {
+        case .busy: self.refreshBusyStateView()
+        case .deleted: self.refreshDeletedStateView()
+        case .editing( let person): self.refreshEditingStateView(person: person)
+        case .save(let person): self.refreshSaveStateView(person: person)
+        case .back: self.onDismiss()
+        }
+    }
+
+    func refreshBusyStateView() {
+        self.refreshNavigationBarButtons()
+        self.activityIndicator.isHidden = false
+    }
+
+    func refreshDeletedStateView() {
+        self.refreshNavigationBarButtons()
+        self.activityIndicator.isHidden = true
+    }
+
+    func refreshEditingStateView(person:Person) {
+        self.refreshNavigationBarButtons()
+        self.activityIndicator.isHidden = true
+
+        if let upwPersonDetailView = self.personDetailView {
+            upwPersonDetailView.personDetailPresenterMode = injectedViewModel.getPersonDetailPresenterMode()//self.personDetailPresenterMode
+            upwPersonDetailView.person = injectedViewModel.getPerson()
+            upwPersonDetailView.attributeUpdated = injectedViewModel.getPersonDetailAttributesUpdated()
+        }
+    }
+
+    func refreshSaveStateView(person:Person) {
+        self.refreshNavigationBarButtons()
+        self.activityIndicator.isHidden = true
+
+        if let upwPersonDetailView = self.personDetailView {
+            upwPersonDetailView.personDetailPresenterMode = injectedViewModel.getPersonDetailPresenterMode()//self.personDetailPresenterMode
+        }
     }
 
     @objc func onRightButtonAction(sender: UIButton!) {
-
-        switch personDetailPresenterMode {
-        case .edit:
-            personDetailPresenterMode = .save
-        case .save:
-            personDetailPresenterMode = .edit
-            self.onUpdateAction(onComplete: {[weak self] _ in
-                guard let weakSelf = self else { return }
-                weakSelf.onDismiss()
-            })
-        }
-        if let upwPersonDetailView = self.personDetailView {
-            upwPersonDetailView.personDetailPresenterMode = self.personDetailPresenterMode
-        }
-        self.refreshPresenter()
+        self.injectedViewModel.onRightButtonAction()
     }
-
 
     @objc func onLeftButtonAction(sender: UIButton!) {
-
-        switch personDetailPresenterMode {
-        case .edit: self.onDismiss()
-        case .save:
-            personDetailPresenterMode = .edit
-            self.attributeUpdated = PersonDetailAttributesUpdated()
-        }
-
-        if let upwPersonDetailView = self.personDetailView {
-            upwPersonDetailView.personDetailPresenterMode = self.personDetailPresenterMode
-            upwPersonDetailView.attributeUpdated = self.attributeUpdated
-        }
-        self.refreshPresenter()
-    }
-
-    private func onUpdateAction(onComplete: (Person) -> Void) {
-
-        let newPerson = Person(email: self.attributeUpdated.newEmail ?? self.person.email,
-                               first: self.attributeUpdated.newFirst ?? self.person.first,
-                               latitude: self.person.latitude,
-                               longitude: self.person.longitude,
-                               thumbnail: self.person.thumbnail,
-                               large: self.person.large,
-                               image: self.attributeUpdated.newImage ?? self.person.getImage())
-
-        PeopleUseCase().update(oldPerson: self.person, newPerson: newPerson, onComplete: onComplete)
+        self.injectedViewModel.onLeftButtonAction()
     }
 
     fileprivate func presentImagePicker() {
@@ -175,24 +148,19 @@ class PersonDetailPresenter: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
 
-    func openCamera()
-    {
-        if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera))
-        {
+    func openCamera() {
+        if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera)) {
             imagePicker.sourceType = UIImagePickerController.SourceType.camera
             imagePicker.allowsEditing = true
             self.present(imagePicker, animated: true, completion: nil)
-        }
-        else
-        {
+        } else {
             let alert  = UIAlertController(title: R.string.localizable.person_detail_picker_warning_image.key.localized, message: R.string.localizable.person_detail_picker_no_camera_image.key.localized, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: R.string.localizable.person_detail_picker_ok_image.key.localized, style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
     }
 
-    func openGallary()
-    {
+    func openGallary() {
         imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
         imagePicker.allowsEditing = true
         self.present(imagePicker, animated: true, completion: nil)
@@ -207,9 +175,11 @@ extension PersonDetailPresenter: UIImagePickerControllerDelegate, UINavigationCo
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let chosenImage = info[.originalImage] as? UIImage{
-            self.attributeUpdated.newImage = chosenImage
-            self.personDetailView.attributeUpdated = attributeUpdated
-            self.refreshPresenter()
+           // self.attributeUpdated.newImage = chosenImage
+            self.injectedViewModel.set(newImage:chosenImage)
+            //self.personDetailView.attributeUpdated = attributeUpdated
+            self.personDetailView.attributeUpdated = self.injectedViewModel.getPersonDetailAttributesUpdated()
+           // self.refreshPresenter()
             self.imagePicker.dismiss(animated: true, completion: nil)
         }
     }
