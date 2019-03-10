@@ -7,39 +7,31 @@
 //
 
 import UIKit
+import SDWebImage
 
 class PeopleListPresenter: UIViewController {
 
       // MARK : - IBOutlets
     @IBOutlet weak var peopleListView: PeopleListView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-
+  
     // MARK: - Callbacks
-    var onPersonSelected: (PersonAPI) -> Void = { _ in /* Default empty block*/}
+    var onPersonSelected: (Person) -> Void = { _ in /* Default empty block*/}
 
     // MARK: - Privvate attributes
-    private var injectedPeopleListViewModel = PeopleListViewModel()
+    private var injectedPeopleListViewModel:PeopleListViewModel = PeopleListViewModel()
 
     // MARK: - Constructor/Initializer
-    static func instantiate() -> PeopleListPresenter {
+    static func instantiate(peopleListViewModel:PeopleListViewModel = PeopleListViewModel()) -> PeopleListPresenter {
         let peopleListPresenter = PeopleListPresenter.instantiate(fromAppStoryboard: .main)
-        peopleListPresenter.injectedPeopleListViewModel = PeopleListViewModel()
+        peopleListPresenter.injectedPeopleListViewModel = peopleListViewModel
         return peopleListPresenter
     }
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         self.setupPresenter()
-    }
-
-/*
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        npsSelectorView.collectionViewLayout.invalidateLayout()
-        npsSelectorView.setupView()
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,34 +40,56 @@ class PeopleListPresenter: UIViewController {
         SDImageCache.shared().clearMemory()
     }
 
-*/
 
     // MARK: - Private/Internal
-    func setupPresenter() {
+    private func setupPresenter() {
 
-        self.title = R.string.localizable.nps_selector_title.key.localized
-/*
-        injectedViewModel.onStateChanged = { [weak self] newViewModelState in
+        setupNavigationbar()
+
+        activityIndicator.style = .whiteLarge
+
+        injectedPeopleListViewModel.onStateChanged = { [weak self] newViewModelState in
             guard let weakSelf = self else { return }
-            weakSelf.refreshView(viewModelState: newViewModelState)
+            weakSelf.refreshView(peopleListViewModelState: newViewModelState)
         }
 
-        npsSelectorView.onRequestForMore = { [weak self] in
+        peopleListView.onRequestForMore = { [weak self] in
             guard let weakSelf = self else { return }
-            weakSelf.injectedViewModel.fetch()
+            weakSelf.injectedPeopleListViewModel.fetch()
         }
-        npsSelectorView.onParkSelected = self.onParkSelected
+        peopleListView.onPersonSelected = self.onPersonSelected
 
-        injectedViewModel.fetch()
- */
+        injectedPeopleListViewModel.fetch()
+
+        NotificationCenter.default.addObserver(self, selector: #selector(onPersonDataUpdated),
+                                               name: NSNotification.Name(rawValue: DataManager.NotificationId.deletedPerson),
+                                               object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onPersonDataUpdated),
+                                               name: NSNotification.Name(rawValue: DataManager.NotificationId.updatedPerson),
+                                               object: nil)
     }
-/*
-    func refreshView(viewModelState:ViewModelState) {
-        switch viewModelState {
-        case .initial: refreshInitialStateView()
-        case .fetching: refreshFetchingStateView()
-        case .fetched(let parks): refreshInitialStateView(parks: parks)
-        case .fetchedFailed: refreshFetchingFailedStateView()
+
+    @objc func onPersonDataUpdated(notification: NSNotification) {
+        injectedPeopleListViewModel.getFetched()
+    }
+
+    fileprivate func setupNavigationbar() {
+        self.title = R.string.localizable.person_list_title.key.localized
+
+        if let navigationController = self.navigationController {
+            navigationController.navigationBar.barTintColor =  AppColors.PersonsList.Background
+            navigationController.navigationBar.titleTextAttributes = [.foregroundColor: AppColors.PersonsList.TitleFontColor,
+                                                                      .font: AppFonts.PersonsList.FirstFont]
+        }
+    }
+
+
+    func refreshView(peopleListViewModelState:PeopleListViewModelState) {
+        switch peopleListViewModelState {
+        case .initial:              refreshInitialStateView()
+        case .fetching:             refreshFetchingStateView()
+        case .fetched(let persons): refreshInitialStateView(persons: persons)
+        case .fetchedFailed:        refreshFetchingFailedStateView()
         }
     }
 
@@ -88,14 +102,13 @@ class PeopleListPresenter: UIViewController {
         activityIndicator.startAnimating()
     }
 
-    func refreshInitialStateView(parks:[Park]) {
+    func refreshInitialStateView(persons:[Person]) {
         activityIndicator.isHidden = true
-        npsSelectorView.parks = parks
+        peopleListView.people = persons
     }
 
     func refreshFetchingFailedStateView() {
         activityIndicator.isHidden = true
         activityIndicator.startAnimating()
     }
-*/
 }

@@ -97,6 +97,7 @@ class UTAPIManager: XCTestCase {
             XCTAssertEqual(restResponse.results[0].location.coordinates.latitude, "-30.8785")
             XCTAssertEqual(restResponse.results[0].location.coordinates.longitude, "-76.7378")
             XCTAssertEqual(restResponse.results[0].picture.thumbnail, "https://randomuser.me/api/portraits/thumb/men/8.jpg")
+            XCTAssertEqual(restResponse.results[0].picture.large, "https://randomuser.me/api/portraits/men/8.jpg")
 
             asyncExpectation.fulfill()
         }, onFailed: { _ in
@@ -127,6 +128,7 @@ class UTAPIManager: XCTestCase {
             XCTAssertEqual(restResponse.results[0].location.coordinates.latitude, "-69.3963")
             XCTAssertEqual(restResponse.results[0].location.coordinates.longitude, "-54.5418")
             XCTAssertEqual(restResponse.results[0].picture.thumbnail, "https://randomuser.me/api/portraits/thumb/men/25.jpg")
+            XCTAssertEqual(restResponse.results[0].picture.large, "https://randomuser.me/api/portraits/men/25.jpg")
 
             asyncExpectation.fulfill()
         }, onFailed: { _ in

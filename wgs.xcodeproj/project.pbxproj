@@ -25,10 +25,17 @@
 		BF63698722314911003D5D7B /* UTDatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF63698622314911003D5D7B /* UTDatabaseManager.swift */; };
 		BF63698E22315AA6003D5D7B /* CoordinatesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF63698822315AA5003D5D7B /* CoordinatesAPI.swift */; };
 		BF63698F22315AA6003D5D7B /* LocationAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF63698922315AA5003D5D7B /* LocationAPI.swift */; };
-		BF63699022315AA6003D5D7B /* ParkImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF63698A22315AA5003D5D7B /* ParkImage.swift */; };
 		BF63699122315AA6003D5D7B /* NameAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF63698B22315AA5003D5D7B /* NameAPI.swift */; };
 		BF63699222315AA6003D5D7B /* PersonAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF63698C22315AA6003D5D7B /* PersonAPI.swift */; };
 		BF63699322315AA6003D5D7B /* PictureAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF63698D22315AA6003D5D7B /* PictureAPI.swift */; };
+		BF63699622316CDF003D5D7B /* PersonDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF63699522316CDF003D5D7B /* PersonDetailPresenter.swift */; };
+		BF63699B223176B2003D5D7B /* PersonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF63699A223176B2003D5D7B /* PersonDetailView.swift */; };
+		BF63699F22317DED003D5D7B /* ImagePersonTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF63699E22317DED003D5D7B /* ImagePersonTVC.swift */; };
+		BF6369A12231853D003D5D7B /* AttributePersonTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6369A02231853C003D5D7B /* AttributePersonTVC.swift */; };
+		BF6369A322318D8D003D5D7B /* MapPersonTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6369A222318D8C003D5D7B /* MapPersonTVC.swift */; };
+		BF6369A52231A4C5003D5D7B /* ActionPersonTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6369A42231A4C5003D5D7B /* ActionPersonTVC.swift */; };
+		BF6369A8223245EF003D5D7B /* LocalFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6369A7223245EF003D5D7B /* LocalFileManager.swift */; };
+		BF6369AB22324F25003D5D7B /* UTLocalFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6369AA22324F25003D5D7B /* UTLocalFileManager.swift */; };
 		BF73B15022307CF90019D51A /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF73B14F22307CF80019D51A /* R.generated.swift */; };
 		BF73B15422307D930019D51A /* main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF73B15222307D930019D51A /* main.storyboard */; };
 		BF73B15522307D930019D51A /* AppStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF73B15322307D930019D51A /* AppStoryboard.swift */; };
@@ -44,6 +51,21 @@
 		BF73B174223089F40019D51A /* PeopleUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF73B173223089F40019D51A /* PeopleUseCase.swift */; };
 		BF73B17722308BDA0019D51A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF73B17622308BDA0019D51A /* Localizable.strings */; };
 		BF73B17922308C4C0019D51A /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF73B17822308C4C0019D51A /* StringExtension.swift */; };
+		BF85FF7D22326B08009C7F8F /* ConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF85FF7C22326B08009C7F8F /* ConfigurationManager.swift */; };
+		BF85FF7F22326FCD009C7F8F /* UTConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF85FF7E22326FCD009C7F8F /* UTConfigurationManager.swift */; };
+		BF85FF8622328487009C7F8F /* PersonEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF85FF8522328487009C7F8F /* PersonEntity.swift */; };
+		BF85FF882232F206009C7F8F /* RealmConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF85FF872232F206009C7F8F /* RealmConfig.swift */; };
+		BF85FF8C22333C9B009C7F8F /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF85FF8A22333C9B009C7F8F /* AppColors.swift */; };
+		BF85FF8D22333C9B009C7F8F /* AppFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF85FF8B22333C9B009C7F8F /* AppFonts.swift */; };
+		BF85FF9722334727009C7F8F /* GothamRounded-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = BF85FF9322333CEE009C7F8F /* GothamRounded-Bold.otf */; };
+		BF85FF9822334727009C7F8F /* GothamRounded-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = BF85FF9522333CEF009C7F8F /* GothamRounded-BoldItalic.otf */; };
+		BF85FF9922334727009C7F8F /* GothamRounded-Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = BF85FF8F22333CEE009C7F8F /* GothamRounded-Book.otf */; };
+		BF85FF9A22334727009C7F8F /* GothamRounded-BookItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = BF85FF9122333CEE009C7F8F /* GothamRounded-BookItalic.otf */; };
+		BF85FF9B22334727009C7F8F /* GothamRounded-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = BF85FF9022333CEE009C7F8F /* GothamRounded-Light.otf */; };
+		BF85FF9C22334727009C7F8F /* GothamRounded-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = BF85FF9222333CEE009C7F8F /* GothamRounded-LightItalic.otf */; };
+		BF85FF9D22334727009C7F8F /* GothamRounded-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = BF85FF9622333CEF009C7F8F /* GothamRounded-Medium.otf */; };
+		BF85FF9E22334727009C7F8F /* GothamRounded-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = BF85FF9422333CEE009C7F8F /* GothamRounded-MediumItalic.otf */; };
+		BF85FFA222345A69009C7F8F /* UTPeopleUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF85FFA122345A69009C7F8F /* UTPeopleUseCase.swift */; };
 		BFF9108122305EED000BA87A /* MockAPIRestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF9107F22305EED000BA87A /* MockAPIRestClient.swift */; };
 		BFF9108222305EED000BA87A /* MockAPIManagerWrongUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF9108022305EED000BA87A /* MockAPIManagerWrongUrl.swift */; };
 		BFF910F422306E0C000BA87A /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF910F322306E0C000BA87A /* DataManager.swift */; };
@@ -87,10 +109,17 @@
 		BF63698622314911003D5D7B /* UTDatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UTDatabaseManager.swift; sourceTree = "<group>"; };
 		BF63698822315AA5003D5D7B /* CoordinatesAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoordinatesAPI.swift; path = wgs/DataLayer/Model/API/CoordinatesAPI.swift; sourceTree = SOURCE_ROOT; };
 		BF63698922315AA5003D5D7B /* LocationAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationAPI.swift; path = wgs/DataLayer/Model/API/LocationAPI.swift; sourceTree = SOURCE_ROOT; };
-		BF63698A22315AA5003D5D7B /* ParkImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParkImage.swift; path = wgs/DataLayer/Model/API/ParkImage.swift; sourceTree = SOURCE_ROOT; };
 		BF63698B22315AA5003D5D7B /* NameAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NameAPI.swift; path = wgs/DataLayer/Model/API/NameAPI.swift; sourceTree = SOURCE_ROOT; };
 		BF63698C22315AA6003D5D7B /* PersonAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersonAPI.swift; path = wgs/DataLayer/Model/API/PersonAPI.swift; sourceTree = SOURCE_ROOT; };
 		BF63698D22315AA6003D5D7B /* PictureAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PictureAPI.swift; path = wgs/DataLayer/Model/API/PictureAPI.swift; sourceTree = SOURCE_ROOT; };
+		BF63699522316CDF003D5D7B /* PersonDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailPresenter.swift; sourceTree = "<group>"; };
+		BF63699A223176B2003D5D7B /* PersonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailView.swift; sourceTree = "<group>"; };
+		BF63699E22317DED003D5D7B /* ImagePersonTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePersonTVC.swift; sourceTree = "<group>"; };
+		BF6369A02231853C003D5D7B /* AttributePersonTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributePersonTVC.swift; sourceTree = "<group>"; };
+		BF6369A222318D8C003D5D7B /* MapPersonTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapPersonTVC.swift; sourceTree = "<group>"; };
+		BF6369A42231A4C5003D5D7B /* ActionPersonTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionPersonTVC.swift; sourceTree = "<group>"; };
+		BF6369A7223245EF003D5D7B /* LocalFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFileManager.swift; sourceTree = "<group>"; };
+		BF6369AA22324F25003D5D7B /* UTLocalFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UTLocalFileManager.swift; sourceTree = "<group>"; };
 		BF73B14F22307CF80019D51A /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		BF73B15222307D930019D51A /* main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = main.storyboard; sourceTree = "<group>"; };
 		BF73B15322307D930019D51A /* AppStoryboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStoryboard.swift; sourceTree = "<group>"; };
@@ -106,6 +135,21 @@
 		BF73B173223089F40019D51A /* PeopleUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeopleUseCase.swift; sourceTree = "<group>"; };
 		BF73B17622308BDA0019D51A /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		BF73B17822308C4C0019D51A /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		BF85FF7C22326B08009C7F8F /* ConfigurationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationManager.swift; sourceTree = "<group>"; };
+		BF85FF7E22326FCD009C7F8F /* UTConfigurationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UTConfigurationManager.swift; sourceTree = "<group>"; };
+		BF85FF8522328487009C7F8F /* PersonEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonEntity.swift; sourceTree = "<group>"; };
+		BF85FF872232F206009C7F8F /* RealmConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmConfig.swift; sourceTree = "<group>"; };
+		BF85FF8A22333C9B009C7F8F /* AppColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
+		BF85FF8B22333C9B009C7F8F /* AppFonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppFonts.swift; sourceTree = "<group>"; };
+		BF85FF8F22333CEE009C7F8F /* GothamRounded-Book.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GothamRounded-Book.otf"; sourceTree = "<group>"; };
+		BF85FF9022333CEE009C7F8F /* GothamRounded-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GothamRounded-Light.otf"; sourceTree = "<group>"; };
+		BF85FF9122333CEE009C7F8F /* GothamRounded-BookItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GothamRounded-BookItalic.otf"; sourceTree = "<group>"; };
+		BF85FF9222333CEE009C7F8F /* GothamRounded-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GothamRounded-LightItalic.otf"; sourceTree = "<group>"; };
+		BF85FF9322333CEE009C7F8F /* GothamRounded-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GothamRounded-Bold.otf"; sourceTree = "<group>"; };
+		BF85FF9422333CEE009C7F8F /* GothamRounded-MediumItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GothamRounded-MediumItalic.otf"; sourceTree = "<group>"; };
+		BF85FF9522333CEF009C7F8F /* GothamRounded-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GothamRounded-BoldItalic.otf"; sourceTree = "<group>"; };
+		BF85FF9622333CEF009C7F8F /* GothamRounded-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GothamRounded-Medium.otf"; sourceTree = "<group>"; };
+		BF85FFA122345A69009C7F8F /* UTPeopleUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UTPeopleUseCase.swift; sourceTree = "<group>"; };
 		BFF9107F22305EED000BA87A /* MockAPIRestClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockAPIRestClient.swift; sourceTree = "<group>"; };
 		BFF9108022305EED000BA87A /* MockAPIManagerWrongUrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockAPIManagerWrongUrl.swift; sourceTree = "<group>"; };
 		BFF910F322306E0C000BA87A /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
@@ -144,6 +188,8 @@
 		BF3DD2C822304DD400489FBA /* DataLayer */ = {
 			isa = PBXGroup;
 			children = (
+				BF85FF7B22326AB3009C7F8F /* ConfigurationManager */,
+				BF6369A6223245CB003D5D7B /* FileManager */,
 				BF636978223125EE003D5D7B /* DatabaseManager */,
 				BFF910F322306E0C000BA87A /* DataManager.swift */,
 				BF3DD2D522304F7C00489FBA /* Core */,
@@ -166,6 +212,7 @@
 		BF3DD2D022304F4B00489FBA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				BF85FF84223283D3009C7F8F /* Database */,
 				BF63697E223132E8003D5D7B /* Person.swift */,
 				BF63697B22312D16003D5D7B /* API */,
 			);
@@ -183,6 +230,8 @@
 		BF3DD2D8223050EB00489FBA /* DataLayer */ = {
 			isa = PBXGroup;
 			children = (
+				BF85FF7822326A7D009C7F8F /* ConfigurationManager */,
+				BF6369A922324DF2003D5D7B /* LocalFileManager */,
 				BF636985223148EF003D5D7B /* DatabaseManager */,
 				BF6369802231351B003D5D7B /* Model */,
 				BF3DD2D9223050F300489FBA /* APIManager */,
@@ -238,6 +287,7 @@
 		BF43413022304842009BB87C /* wgsTests */ = {
 			isa = PBXGroup;
 			children = (
+				BF85FF9F22345A1C009C7F8F /* Domain */,
 				BF3DD2D8223050EB00489FBA /* DataLayer */,
 				BF43413322304842009BB87C /* Info.plist */,
 			);
@@ -248,6 +298,7 @@
 			isa = PBXGroup;
 			children = (
 				BF636979223127AE003D5D7B /* DatabaseManager.swift */,
+				BF85FF872232F206009C7F8F /* RealmConfig.swift */,
 			);
 			path = DatabaseManager;
 			sourceTree = "<group>";
@@ -258,7 +309,6 @@
 				BF63698822315AA5003D5D7B /* CoordinatesAPI.swift */,
 				BF63698922315AA5003D5D7B /* LocationAPI.swift */,
 				BF63698B22315AA5003D5D7B /* NameAPI.swift */,
-				BF63698A22315AA5003D5D7B /* ParkImage.swift */,
 				BF63698C22315AA6003D5D7B /* PersonAPI.swift */,
 				BF63698D22315AA6003D5D7B /* PictureAPI.swift */,
 			);
@@ -280,6 +330,43 @@
 				BF63698622314911003D5D7B /* UTDatabaseManager.swift */,
 			);
 			name = DatabaseManager;
+			sourceTree = "<group>";
+		};
+		BF63699422316CB0003D5D7B /* PersonDetail */ = {
+			isa = PBXGroup;
+			children = (
+				BF63699722316DE0003D5D7B /* Views */,
+				BF63699522316CDF003D5D7B /* PersonDetailPresenter.swift */,
+			);
+			path = PersonDetail;
+			sourceTree = "<group>";
+		};
+		BF63699722316DE0003D5D7B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BF63699A223176B2003D5D7B /* PersonDetailView.swift */,
+				BF6369A222318D8C003D5D7B /* MapPersonTVC.swift */,
+				BF63699E22317DED003D5D7B /* ImagePersonTVC.swift */,
+				BF6369A02231853C003D5D7B /* AttributePersonTVC.swift */,
+				BF6369A42231A4C5003D5D7B /* ActionPersonTVC.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		BF6369A6223245CB003D5D7B /* FileManager */ = {
+			isa = PBXGroup;
+			children = (
+				BF6369A7223245EF003D5D7B /* LocalFileManager.swift */,
+			);
+			path = FileManager;
+			sourceTree = "<group>";
+		};
+		BF6369A922324DF2003D5D7B /* LocalFileManager */ = {
+			isa = PBXGroup;
+			children = (
+				BF6369AA22324F25003D5D7B /* UTLocalFileManager.swift */,
+			);
+			path = LocalFileManager;
 			sourceTree = "<group>";
 		};
 		BF73B14E22307CF80019D51A /* R.Swift */ = {
@@ -338,6 +425,7 @@
 		BF73B16022307F830019D51A /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				BF63699422316CB0003D5D7B /* PersonDetail */,
 				BF73B16122307F9C0019D51A /* PeopleList */,
 			);
 			path = Main;
@@ -395,6 +483,70 @@
 			path = Strings;
 			sourceTree = "<group>";
 		};
+		BF85FF7822326A7D009C7F8F /* ConfigurationManager */ = {
+			isa = PBXGroup;
+			children = (
+				BF85FF7E22326FCD009C7F8F /* UTConfigurationManager.swift */,
+			);
+			path = ConfigurationManager;
+			sourceTree = "<group>";
+		};
+		BF85FF7B22326AB3009C7F8F /* ConfigurationManager */ = {
+			isa = PBXGroup;
+			children = (
+				BF85FF7C22326B08009C7F8F /* ConfigurationManager.swift */,
+			);
+			path = ConfigurationManager;
+			sourceTree = "<group>";
+		};
+		BF85FF84223283D3009C7F8F /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				BF85FF8522328487009C7F8F /* PersonEntity.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		BF85FF8922333C8B009C7F8F /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				BF85FF8A22333C9B009C7F8F /* AppColors.swift */,
+				BF85FF8B22333C9B009C7F8F /* AppFonts.swift */,
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
+		BF85FF8E22333CD6009C7F8F /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				BF85FF9322333CEE009C7F8F /* GothamRounded-Bold.otf */,
+				BF85FF9522333CEF009C7F8F /* GothamRounded-BoldItalic.otf */,
+				BF85FF8F22333CEE009C7F8F /* GothamRounded-Book.otf */,
+				BF85FF9122333CEE009C7F8F /* GothamRounded-BookItalic.otf */,
+				BF85FF9022333CEE009C7F8F /* GothamRounded-Light.otf */,
+				BF85FF9222333CEE009C7F8F /* GothamRounded-LightItalic.otf */,
+				BF85FF9622333CEF009C7F8F /* GothamRounded-Medium.otf */,
+				BF85FF9422333CEE009C7F8F /* GothamRounded-MediumItalic.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		BF85FF9F22345A1C009C7F8F /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				BF85FFA022345A2A009C7F8F /* UseCases */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		BF85FFA022345A2A009C7F8F /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				BF85FFA122345A69009C7F8F /* UTPeopleUseCase.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
 		BFF9107E22305EED000BA87A /* Mock */ = {
 			isa = PBXGroup;
 			children = (
@@ -418,6 +570,8 @@
 		BFF910F72230710D000BA87A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BF85FF8E22333CD6009C7F8F /* Fonts */,
+				BF85FF8922333C8B009C7F8F /* Styles */,
 				BF73B17522308BBC0019D51A /* Strings */,
 				BF43412322304841009BB87C /* Assets.xcassets */,
 				BF73B14E22307CF80019D51A /* R.Swift */,
@@ -521,6 +675,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF85FF9722334727009C7F8F /* GothamRounded-Bold.otf in Resources */,
+				BF85FF9822334727009C7F8F /* GothamRounded-BoldItalic.otf in Resources */,
+				BF85FF9922334727009C7F8F /* GothamRounded-Book.otf in Resources */,
+				BF85FF9A22334727009C7F8F /* GothamRounded-BookItalic.otf in Resources */,
+				BF85FF9B22334727009C7F8F /* GothamRounded-Light.otf in Resources */,
+				BF85FF9C22334727009C7F8F /* GothamRounded-LightItalic.otf in Resources */,
+				BF85FF9D22334727009C7F8F /* GothamRounded-Medium.otf in Resources */,
+				BF85FF9E22334727009C7F8F /* GothamRounded-MediumItalic.otf in Resources */,
 				BF73B17722308BDA0019D51A /* Localizable.strings in Resources */,
 				BF43412722304841009BB87C /* LaunchScreen.storyboard in Resources */,
 				BF43412422304841009BB87C /* Assets.xcassets in Resources */,
@@ -616,6 +778,8 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
 				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -625,6 +789,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -640,28 +806,39 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF73B15022307CF90019D51A /* R.generated.swift in Sources */,
+				BF6369A322318D8D003D5D7B /* MapPersonTVC.swift in Sources */,
+				BF85FF8C22333C9B009C7F8F /* AppColors.swift in Sources */,
 				BF63699222315AA6003D5D7B /* PersonAPI.swift in Sources */,
 				BF43411F22304840009BB87C /* ViewController.swift in Sources */,
 				BF63699122315AA6003D5D7B /* NameAPI.swift in Sources */,
 				BF73B171223089600019D51A /* PeopleListViewModel.swift in Sources */,
+				BF85FF8622328487009C7F8F /* PersonEntity.swift in Sources */,
 				BF73B15922307E590019D51A /* StartUpAppSequencer.swift in Sources */,
 				BF73B15E22307ECD0019D51A /* ConcurrentOperation.swift in Sources */,
+				BF85FF882232F206009C7F8F /* RealmConfig.swift in Sources */,
 				BF3DD2D722304F7C00489FBA /* Resetable.swift in Sources */,
+				BF6369A12231853D003D5D7B /* AttributePersonTVC.swift in Sources */,
+				BF6369A8223245EF003D5D7B /* LocalFileManager.swift in Sources */,
+				BF6369A52231A4C5003D5D7B /* ActionPersonTVC.swift in Sources */,
 				BF63698F22315AA6003D5D7B /* LocationAPI.swift in Sources */,
 				BF3DD2CE22304EBF00489FBA /* APIRestClient.swift in Sources */,
+				BF63699622316CDF003D5D7B /* PersonDetailPresenter.swift in Sources */,
 				BF63697F223132E8003D5D7B /* Person.swift in Sources */,
 				BF73B16E223087A10019D51A /* PeopleListTVC.swift in Sources */,
 				BF3DD2CF22304EBF00489FBA /* RestResponse.swift in Sources */,
 				BF43411D22304840009BB87C /* AppDelegate.swift in Sources */,
+				BF63699F22317DED003D5D7B /* ImagePersonTVC.swift in Sources */,
+				BF85FF7D22326B08009C7F8F /* ConfigurationManager.swift in Sources */,
 				BF3DD2CD22304EBF00489FBA /* APIManager.swift in Sources */,
 				BF73B169223081350019D51A /* UIApplicationExtension.swift in Sources */,
 				BF73B16C223087850019D51A /* PeopleListView.swift in Sources */,
 				BF73B15522307D930019D51A /* AppStoryboard.swift in Sources */,
 				BF73B166223080040019D51A /* MainFlowCoordinator.swift in Sources */,
+				BF85FF8D22333C9B009C7F8F /* AppFonts.swift in Sources */,
 				BF73B15C22307E900019D51A /* PresentMainAppOperation.swift in Sources */,
-				BF63699022315AA6003D5D7B /* ParkImage.swift in Sources */,
 				BF73B174223089F40019D51A /* PeopleUseCase.swift in Sources */,
 				BF63699322315AA6003D5D7B /* PictureAPI.swift in Sources */,
+				BF63699B223176B2003D5D7B /* PersonDetailView.swift in Sources */,
 				BF73B16322307FC30019D51A /* PeopleListPresenter.swift in Sources */,
 				BF63698E22315AA6003D5D7B /* CoordinatesAPI.swift in Sources */,
 				BFF910F422306E0C000BA87A /* DataManager.swift in Sources */,
@@ -677,8 +854,11 @@
 				BFF9108122305EED000BA87A /* MockAPIRestClient.swift in Sources */,
 				BF63698222313544003D5D7B /* UTPerson.swift in Sources */,
 				BF63698422313D0C003D5D7B /* UTDataManager.swift in Sources */,
+				BF85FFA222345A69009C7F8F /* UTPeopleUseCase.swift in Sources */,
+				BF85FF7F22326FCD009C7F8F /* UTConfigurationManager.swift in Sources */,
 				BF3DD2DB2230511800489FBA /* UTAPIManager.swift in Sources */,
 				BFF9108222305EED000BA87A /* MockAPIManagerWrongUrl.swift in Sources */,
+				BF6369AB22324F25003D5D7B /* UTLocalFileManager.swift in Sources */,
 				BF63698722314911003D5D7B /* UTDatabaseManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

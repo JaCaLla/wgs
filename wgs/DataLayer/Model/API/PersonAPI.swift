@@ -16,7 +16,6 @@ struct PersonAPI {
         static let email = "email"
         static let picture = "picture"
         static let location = "location"
-        static let id       = "id"
     }
 
     // MARK: - Public attributes
@@ -32,7 +31,6 @@ extension PersonAPI:Decodable {
         case email = "email"
         case picture = "picture"
         case location = "location"
-        case id   = "id"
     }
 
     init(from decoder:Decoder) throws {

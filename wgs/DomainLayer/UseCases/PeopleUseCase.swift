@@ -16,14 +16,27 @@ class PeopleUseCase:NSObject {
         self.injectedDataManager = dataManager
     }
 
-    func getFirst(onSucceed : @escaping (([PersonAPI]) -> Void),
+    func getFirst(onSucceed : @escaping (([Person]) -> Void),
                   onFailed: @escaping ((ResponseCode) -> Void)) {
-      //  injectedDataManager.getFirst(onSucceed:onSucceed,onFailed:onFailed)
+        injectedDataManager.getFirst(onSucceed:onSucceed,onFailed:onFailed)
     }
 
-    func getNext(onSucceed : @escaping (([PersonAPI]) -> Void),
+    func getNext(onSucceed : @escaping (([Person]) -> Void),
                  onFailed: @escaping ((ResponseCode) -> Void)) {
-//         injectedDataManager.getNext(onSucceed:onSucceed,onFailed:onFailed)
+         injectedDataManager.getNext(onSucceed:onSucceed,onFailed:onFailed)
+    }
+
+    func remove(person:Person, onComplete: () -> Void = {/* Default empty block*/}) {
+        self.injectedDataManager.remove(person: person, onComplete: onComplete)
+    }
+
+    func update(oldPerson:Person,newPerson:Person, onComplete: (Person) -> Void = { _ in /* Default empty block*/}) {
+
+        self.injectedDataManager.update(oldPerson: oldPerson, newPerson: newPerson, onComplete: onComplete)
+    }
+
+    func getFetched(onComplete : @escaping (([Person]) -> Void)) {
+        self.injectedDataManager.getFetched(onComplete: onComplete)
     }
 
 }

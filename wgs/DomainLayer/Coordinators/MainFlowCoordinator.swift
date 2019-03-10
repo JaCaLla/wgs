@@ -26,14 +26,25 @@ class MainFlowCoordinator {
     // MARK: - Private/Internal
     private func presentPeopleList()  {
         let peopleListPresenter = PeopleListPresenter.instantiate()
-       /*  npsSelectorPresenter.modalTransitionStyle = .crossDissolve
-        npsSelectorPresenter.onParkSelected = { [weak self] park in
+         peopleListPresenter.modalTransitionStyle = .crossDissolve
+        peopleListPresenter.onPersonSelected = { [weak self] person in
             guard let weakSelf = self else { return }
-            weakSelf.presentNPSPictureSliderPresenter(park: park)
+            weakSelf.presentDetails(person: person)
         }
-*/
+
         mainFlowNavigationController.viewControllers = [peopleListPresenter]
          UIApplication.present(viewController: mainFlowNavigationController, animated: true, completion: nil)
+    }
+
+    private func presentDetails(person:Person) {
+        let personDetailPresenter:PersonDetailPresenter = PersonDetailPresenter.instantiate(person: person)
+        personDetailPresenter.onDismiss = { [weak self]  in
+            guard let weakSelf = self else { return }
+            weakSelf.mainFlowNavigationController.popViewController(animated: true)
+        }
+
+        mainFlowNavigationController.pushViewController(personDetailPresenter, animated: true)
+
     }
 
 }

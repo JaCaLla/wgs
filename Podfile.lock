@@ -6,6 +6,11 @@ PODS:
   - R.swift (5.0.2):
     - R.swift.Library (~> 5.0.0)
   - R.swift.Library (5.0.0)
+  - Realm (3.13.1):
+    - Realm/Headers (= 3.13.1)
+  - Realm/Headers (3.13.1)
+  - RealmSwift (3.13.1):
+    - Realm (= 3.13.1)
   - SDWebImage (4.4.6):
     - SDWebImage/Core (= 4.4.6)
   - SDWebImage/Core (4.4.6)
@@ -14,6 +19,7 @@ DEPENDENCIES:
   - Alamofire
   - CocoaLumberjack/Swift (~> 3.2.0)
   - R.swift
+  - RealmSwift (= 3.13.1)
   - SDWebImage
 
 SPEC REPOS:
@@ -22,6 +28,8 @@ SPEC REPOS:
     - CocoaLumberjack
     - R.swift
     - R.swift.Library
+    - Realm
+    - RealmSwift
     - SDWebImage
 
 SPEC CHECKSUMS:
@@ -29,8 +37,10 @@ SPEC CHECKSUMS:
   CocoaLumberjack: 2800c03334042fe80589423c8d80e582dcaec482
   R.swift: 81455d81467763cbd3f4d79d938d05f4ac4c0228
   R.swift.Library: 0bf390e729bc10bb2c9e4fb78bd043164a7be4ff
+  Realm: 50071da38fe079e0735e47c9f2eae738c68c5996
+  RealmSwift: 8a1e6a02b7a08cd17a31e3115143fb69fe5f3fb9
   SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
 
-PODFILE CHECKSUM: feac619403c8d4292d69538fabca1a75550774c1
+PODFILE CHECKSUM: f47c970d568c12bedeab6e77572f64df8eb402b1
 
 COCOAPODS: 1.5.3

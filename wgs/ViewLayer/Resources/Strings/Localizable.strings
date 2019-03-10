@@ -1,4 +1,16 @@
-"nps_selector_title" = "NPS Selector";
-"picture_viewer_alert_title" = "Instructions";
-"picture_viewer_alert_message" = "Pinch for Zoom in/out. Double tap for restore image size";
-"picture_viewer_alert_button" = "OK";
+"person_list_title" = "People List";
+
+"person_detail_email" = "email";
+"person_detail_first" = "first";
+"person_detail_edit" = "Edit";
+"person_detail_save" = "Done";
+"person_detail_cancel" = "Cancel";
+"person_detail_back" = "< Back";
+"person_detail_delete" = "DELETE";
+"person_detail_picker_choose_image" = "Choose Image";
+"person_detail_picker_camera" = "Camera";
+"person_detail_picker_gallery" = "Gallery";
+"person_detail_picker_cancel" = "Cancel";
+"person_detail_picker_warning_image" = "Warning";
+"person_detail_picker_no_camera_image" = "You don't have camera";
+"person_detail_picker_ok_image" = "Ok";

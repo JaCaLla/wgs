@@ -12,7 +12,7 @@ target 'wgs' do
   pod 'Alamofire'
 
   # Data Persistance
-  #pod 'RealmSwift', '3.13.1'
+  pod 'RealmSwift', '3.13.1'
 
   # Pods for UI
   pod 'SDWebImage'

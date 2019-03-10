@@ -11,7 +11,7 @@ import Foundation
 enum PeopleListViewModelState: RawRepresentable {
     case initial
     case fetching
-    case fetched([PersonAPI])
+    case fetched([Person])
     case fetchedFailed
 
     func isInitial() -> Bool { return self == .initial }
@@ -56,20 +56,20 @@ class PeopleListViewModel {
     
     // MARK: - Private attributes
 
-    var parksUseCase = PeopleUseCase()
+    var injectedPeopleUseCase = PeopleUseCase()
 
-    init(parksUseCase:PeopleUseCase = PeopleUseCase()) {
-        self.parksUseCase = PeopleUseCase()
+    init(peopleUseCase:PeopleUseCase = PeopleUseCase()) {
+        self.injectedPeopleUseCase = PeopleUseCase()
 
         onStateChanged(.fetching)
 
-        parksUseCase.getFirst(onSucceed: { [weak self] parks in
+        peopleUseCase.getFirst(onSucceed: { [weak self] persons in
             guard let weakSelf = self else { return }
-            guard parks.count > 0 else {
+            guard persons.count > 0 else {
                 weakSelf.onStateChanged(.fetchedFailed)
                 return
             }
-            weakSelf.onStateChanged(.fetched(parks))
+            weakSelf.onStateChanged(.fetched(persons))
         }, onFailed: { _ in
             // TODO: Handle error
         })
@@ -79,18 +79,23 @@ class PeopleListViewModel {
     func fetch() {
 
         onStateChanged(.fetching)
-        parksUseCase.getNext(onSucceed: { [weak self] parks in
+        injectedPeopleUseCase.getNext(onSucceed: { [weak self] people in
             guard let weakSelf = self else { return }
-            guard parks.count > 0 else {
+            guard people.count > 0 else {
                 weakSelf.onStateChanged(.fetchedFailed)
                 return
             }
-            weakSelf.onStateChanged(.fetched(parks))
+            weakSelf.onStateChanged(.fetched(people))
             }, onFailed: { _ in
                 // TODO: Handle error
         })
+    }
 
+    func getFetched() {
+        onStateChanged(.fetching)
+        injectedPeopleUseCase.getFetched(onComplete: { [weak self] people in
+            guard let weakSelf = self else { return }
+            weakSelf.onStateChanged(.fetched(people))
+        })
     }
 }
-
-
