@@ -109,7 +109,7 @@ final class DataManager {
     }
 
     func getImage(fileName: String) -> UIImage? {
-        return injectedLocalFileManager.loadImageFromDiskWith(fileName:fileName)
+        return injectedLocalFileManager.loadImage(fileName:fileName)
     }
 
     // MARK: - Configuration Manager

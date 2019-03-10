@@ -19,32 +19,21 @@ final class LocalFileManager {
     func saveImage(imageName: String, image: UIImage) {
 
 
-        guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
-
-        let fileName = imageName
-        let fileURL = documentsDirectory.appendingPathComponent(fileName)
-        guard let data = image.jpegData(compressionQuality: 1) else { return }
-
-        //Checks if file exists, removes it if so.
-        if FileManager.default.fileExists(atPath: fileURL.path) {
-            do {
-                try FileManager.default.removeItem(atPath: fileURL.path)
-                print("Removed old image")
-            } catch let removeError {
-                print("couldn't remove file at path", removeError)
-            }
-
+        let fileManager = FileManager.default
+        let path = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString)
+        if !fileManager.fileExists(atPath: path as String) {
+            try! fileManager.createDirectory(atPath: path as String, withIntermediateDirectories: true, attributes: nil)
         }
-
-        do {
-            try data.write(to: fileURL)
-        } catch let error {
-            print("error saving file with error", error)
-        }
+        let url = NSURL(string: path as String)
+        let imagePath = url!.appendingPathComponent(imageName)
+        let urlString: String = imagePath!.absoluteString
+        //let imageData = UIImageJPEGRepresentation(image, 0.5)
+        let imageData = image.pngData()
+        fileManager.createFile(atPath: urlString as String, contents: imageData, attributes: nil)
 
     }
 
-    func loadImageFromDiskWith(fileName: String) -> UIImage? {
+    func loadImage(fileName: String) -> UIImage? {
 
         let documentDirectory = FileManager.SearchPathDirectory.documentDirectory
 
@@ -55,7 +44,6 @@ final class LocalFileManager {
             let imageUrl = URL(fileURLWithPath: dirPath).appendingPathComponent(fileName)
             let image = UIImage(contentsOfFile: imageUrl.path)
             return image
-
         }
 
         return nil
@@ -79,18 +67,17 @@ final class LocalFileManager {
     }
 
     func remove(filename:String) {
-        let documentDirectory = FileManager.SearchPathDirectory.documentDirectory
 
-        let userDomainMask = FileManager.SearchPathDomainMask.userDomainMask
-        let paths = NSSearchPathForDirectoriesInDomains(documentDirectory, userDomainMask, true)
+        guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
 
-        do {
-            if let dirPath = paths.first {
-                let imageUrl = URL(fileURLWithPath: dirPath).appendingPathComponent(filename)
-                try FileManager.default.removeItem(at: imageUrl)
+        let fileURL = documentsDirectory.appendingPathComponent(filename)
+        //Checks if file exists, removes it if so.
+        if FileManager.default.fileExists(atPath: fileURL.path) {
+            do {
+                try FileManager.default.removeItem(atPath: fileURL.path)
+            } catch let error {
+                DDLogError("couldn't remove file at path \(error)")
             }
-        } catch {
-            DDLogError("ERROR: File not found")
         }
     }
 

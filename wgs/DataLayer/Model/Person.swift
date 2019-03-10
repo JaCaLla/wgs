@@ -19,7 +19,7 @@ struct Person {
     var thumbnail:String = ""
     var large:String = ""
 
-    private var imageLocalName:String? = ""
+    private var imageLocalName:String?
 
     // MARK : - Constructors/Initializers
     init() {
@@ -109,7 +109,6 @@ struct Person {
     mutating func set(image:UIImage) {
         let filename = "\(Date().timeIntervalSince1970)"
         self.imageLocalName = filename
-        //self.imageLocal = image
         injectedDataManager.save(imageName: filename, image: image)
     }
 

@@ -192,21 +192,27 @@ class UTPersonDetailViewModel: XCTestCase {
         XCTAssertEqual(DatabaseManager.shared.getPersons().count, 1)
 
         let personDetailViewModel = PersonDetailViewModel(person: person1)
-        var expected = PersonDetailViewModelState.save(person1)
+       // var expected = PersonDetailViewModelState.save(person1)
+
+        let expectedSeq:[PersonDetailViewModelState] = [PersonDetailViewModelState.save(person1),
+                                                        PersonDetailViewModelState.editing(person1),
+                                                        PersonDetailViewModelState.save(person1)]
+        var index = 0
         personDetailViewModel.onStateChanged = { personDetailViewModelState in
-            guard expected.rawValue == personDetailViewModelState.rawValue else {
+            guard index < expectedSeq.count else {
                 XCTFail()
                 asyncExpectation.fulfill()
                 return
             }
-            if expected.rawValue == PersonDetailViewModelState.save(person1).rawValue &&
-                personDetailViewModelState.rawValue == PersonDetailViewModelState.save(person1).rawValue {
-                expected = PersonDetailViewModelState.editing(person1)
-            } else if expected.rawValue == PersonDetailViewModelState.editing(person1).rawValue &&
-                personDetailViewModelState.rawValue == PersonDetailViewModelState.editing(person1).rawValue {
-                asyncExpectation.fulfill()
-            } else {
+            guard expectedSeq[index].rawValue == personDetailViewModelState.rawValue else {
                 XCTFail()
+                asyncExpectation.fulfill()
+                return
+            }
+
+            index += 1
+            if index == expectedSeq.count {
+                asyncExpectation.fulfill()
             }
         }
         XCTAssertEqual(personDetailViewModel.getPersonDetailPresenterMode(), .edit)
@@ -370,26 +376,27 @@ class UTPersonDetailViewModel: XCTestCase {
         XCTAssertEqual(DatabaseManager.shared.getPersons().count, 1)
 
         let personDetailViewModel = PersonDetailViewModel(person: person1)
-        var expected = PersonDetailViewModelState.save(person1)
+        let expectedSeq:[PersonDetailViewModelState] = [PersonDetailViewModelState.save(person1),
+        PersonDetailViewModelState.save(person1),
+        PersonDetailViewModelState.busy,
+        PersonDetailViewModelState.editing(person1),
+        PersonDetailViewModelState.save(person1)]
+        var index = 0
         personDetailViewModel.onStateChanged = { personDetailViewModelState in
-            guard expected.rawValue == personDetailViewModelState.rawValue else {
+            guard index < expectedSeq.count else {
                 XCTFail()
                 asyncExpectation.fulfill()
                 return
             }
-            if expected.rawValue == PersonDetailViewModelState.save(person1).rawValue &&
-                personDetailViewModelState.rawValue == PersonDetailViewModelState.save(person1).rawValue {
-                expected = PersonDetailViewModelState.busy
-            } else if expected.rawValue == PersonDetailViewModelState.busy.rawValue &&
-                personDetailViewModelState.rawValue == PersonDetailViewModelState.busy.rawValue {
-                expected = PersonDetailViewModelState.editing(person1)
-            } else if expected.rawValue == PersonDetailViewModelState.editing(person1).rawValue &&
-                personDetailViewModelState.rawValue == PersonDetailViewModelState.editing(person1).rawValue {
-
-                XCTAssertEqual(DatabaseManager.shared.getPersons().count, 1)
-                asyncExpectation.fulfill()
-            } else {
+            guard expectedSeq[index].rawValue == personDetailViewModelState.rawValue else {
                 XCTFail()
+                asyncExpectation.fulfill()
+                return
+            }
+
+            index += 1
+            if index == expectedSeq.count {
+                asyncExpectation.fulfill()
             }
         }
         XCTAssertEqual(personDetailViewModel.getPersonDetailPresenterMode(), .edit)
@@ -410,11 +417,11 @@ class UTPersonDetailViewModel: XCTestCase {
         XCTAssertEqual(personDetailViewModel.getTitleRightButton(),"Done")
 
 
-        personDetailViewModel.onRightButtonAction() // Press Left back button
+        personDetailViewModel.onRightButtonAction() // Press Done
         personDetailViewModel.set(newImage: R.image.default_profile()!)
 
         XCTAssertNotEqual(person1, personDetailViewModel.getPerson())
-        XCTAssertNotNil(personDetailViewModel.getPerson().getImage())
+        XCTAssertNotNil(personDetailViewModel.getPersonDetailAttributesUpdated().newImage)
         XCTAssertNil(personDetailViewModel.getNewEmail())
         XCTAssertNil(personDetailViewModel.getNewFirst())
         XCTAssertEqual(personDetailViewModel.existsAttributesUpdated(),true)

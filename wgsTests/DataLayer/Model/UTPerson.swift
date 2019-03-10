@@ -12,6 +12,7 @@ class UTPerson: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        DataManager.shared.reset()
     }
 
     override func tearDown() {
@@ -55,6 +56,7 @@ class UTPerson: XCTestCase {
         XCTAssertNotNil(person2.getImage())
         XCTAssertNotEqual(person1.getImageName()!, person2.getImageName()!)
         XCTAssertNotEqual(person1,person2)
+        XCTAssertEqual(LocalFileManager.shared.count(), 2)
     }
 
     func test_constructor_fromPerson_withoutImage() {
