@@ -26,6 +26,8 @@ class UTDataManager: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         let asyncExpectation = expectation(description: "\(#function)")
+        
+         DataManager.shared.reset()
 
         XCTAssertEqual(DatabaseManager.shared.getPersons().count, 0)
 
@@ -97,6 +99,7 @@ class UTDataManager: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         let asyncExpectation = expectation(description: "\(#function)")
+         DataManager.shared.reset()
 
         XCTAssertEqual(DatabaseManager.shared.getPersons().count, 0)
 

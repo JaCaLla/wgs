@@ -30,7 +30,7 @@ class PeopleListView: UITableView {
     // MARK: - Internal/Private
     func setupView() {
 
-      self.backgroundColor = AppColors.PersonsList.Background
+      self.backgroundColor = AppColors.PersonsList.background
 
       self.dataSource         =  self
       self.delegate           = self

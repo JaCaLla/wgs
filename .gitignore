@@ -664,3 +664,8 @@ Pods/Target Support Files/SDWebImage/SDWebImage-prefix.pch
 Pods/Target Support Files/SDWebImage/SDWebImage-umbrella.h
 Pods/Target Support Files/SDWebImage/SDWebImage.modulemap
 Pods/Target Support Files/SDWebImage/SDWebImage.xcconfig
+Pods/Realm/include/RLMSyncSessionRefreshHandle.h
+Pods/Realm/include/core/realm/util/http.hpp
+Pods/Realm/include/impl/object_notifier.hpp
+.scannerwork/.sonar_lock
+.scannerwork/report-task.txt

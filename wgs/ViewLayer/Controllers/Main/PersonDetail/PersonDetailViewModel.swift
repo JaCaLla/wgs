@@ -161,7 +161,11 @@ class PersonDetailViewModel {
     }
 
     func isEnabledRightButtton() -> Bool {
-        return  personDetailPresenterMode.isEdit() ? true : self.attributeUpdated.existsAttributesUpdated()
+        guard personDetailPresenterMode.isEdit() else {
+            return self.attributeUpdated.existsAttributesUpdated()
+        }
+        
+        return true
     }
 
     func onRightButtonAction() {

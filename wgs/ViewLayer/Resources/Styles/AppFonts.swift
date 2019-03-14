@@ -12,14 +12,14 @@ import UIKit
 struct AppFonts {
 
     struct PersonsList {
-        static let FirstFont      = TextStyle.h20Bold.font
-        static let EmailFont      = TextStyle.h15Light.font
+        static let firstFont      = TextStyle.h20Bold.font
+        static let emailFont      = TextStyle.h15Light.font
     }
 
     struct PersonDetail {
-        static let ValueFont      = TextStyle.h18Bold.font
-        static let LabelFont      = TextStyle.h15LightItalic.font
-        static let ButtonFont     = TextStyle.h20Bold.font
+        static let valueFont      = TextStyle.h18Bold.font
+        static let labelFont      = TextStyle.h15LightItalic.font
+        static let buttonFont     = TextStyle.h20Bold.font
     }
 }
 

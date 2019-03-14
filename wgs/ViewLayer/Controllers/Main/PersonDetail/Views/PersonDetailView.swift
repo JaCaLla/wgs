@@ -111,7 +111,7 @@ class PersonDetailView: UITableView {
     // MARK: - Internal/Private
     func setupView() {
         
-        self.backgroundColor = AppColors.PersonDetail.Background
+        self.backgroundColor = AppColors.PersonDetail.background
         self.dataSource         =  self
     }
 

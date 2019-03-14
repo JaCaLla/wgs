@@ -73,21 +73,21 @@ class AttributePersonTVC: UITableViewCell {
 
     //  MARK: - Private/Internal methods
     private func setupView() {
-        backgroundColor = AppColors.PersonDetail.Background
+        backgroundColor = AppColors.PersonDetail.background
         self.selectionStyle = .none
         txtAttributeValue.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: .editingChanged)
     }
 
     private func  refreshView() {
-        lblAttributeName.font = AppFonts.PersonDetail.LabelFont
-        lblAttributeName.textColor = AppColors.PersonDetail.FontColor
+        lblAttributeName.font = AppFonts.PersonDetail.labelFont
+        lblAttributeName.textColor = AppColors.PersonDetail.fontColor
         lblAttributeName.text = attributePersonType.getText()
 
-        txtAttributeValue.font = AppFonts.PersonDetail.ValueFont
+        txtAttributeValue.font = AppFonts.PersonDetail.valueFont
         txtAttributeValue.text = attributePersonType.getValue()
         txtAttributeValue.delegate = self
         txtAttributeValue.borderStyle = personDetailPresenterMode.isSave() ? .line :  .none
-        txtAttributeValue.textColor = AppColors.PersonDetail.FontColor//personDetailPresenterMode.isSave() ? AppColors.PersonDetail.Background : AppColors.PersonDetail.FontColor
+        txtAttributeValue.textColor = AppColors.PersonDetail.fontColor//personDetailPresenterMode.isSave() ? AppColors.PersonDetail.Background : AppColors.PersonDetail.FontColor
     }
 }
 

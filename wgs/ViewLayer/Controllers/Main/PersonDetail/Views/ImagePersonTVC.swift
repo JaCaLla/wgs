@@ -39,7 +39,7 @@ class ImagePersonTVC: UITableViewCell {
 
     // MARK: - Internal/Private
     private func setupView() {
-        self.backgroundColor = AppColors.PersonDetail.Background
+        self.backgroundColor = AppColors.PersonDetail.background
         self.selectionStyle = .none
     }
 

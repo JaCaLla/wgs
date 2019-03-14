@@ -77,9 +77,9 @@ class PeopleListPresenter: UIViewController {
         self.title = R.string.localizable.person_list_title.key.localized
 
         if let navigationController = self.navigationController {
-            navigationController.navigationBar.barTintColor =  AppColors.PersonsList.Background
-            navigationController.navigationBar.titleTextAttributes = [.foregroundColor: AppColors.PersonsList.TitleFontColor,
-                                                                      .font: AppFonts.PersonsList.FirstFont]
+            navigationController.navigationBar.barTintColor =  AppColors.PersonsList.background
+            navigationController.navigationBar.titleTextAttributes = [.foregroundColor: AppColors.PersonsList.titleFontColor,
+                                                                      .font: AppFonts.PersonsList.firstFont]
         }
     }
 

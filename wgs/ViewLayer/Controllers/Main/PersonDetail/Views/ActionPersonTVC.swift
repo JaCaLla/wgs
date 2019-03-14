@@ -42,12 +42,12 @@ class ActionPersonTVC: UITableViewCell {
     // MARK: - Internal/Private
     func setupView() {
 
-        self.backgroundColor = AppColors.PersonDetail.Background
+        self.backgroundColor = AppColors.PersonDetail.background
         self.selectionStyle = .none
 
-        btnAction.titleLabel?.font        = AppFonts.PersonDetail.ButtonFont
-        btnAction.titleLabel?.textColor   = AppColors.PersonDetail.FontColor
-        btnAction.backgroundColor         = AppColors.PersonDetail.ButtonBackgroundColor
+        btnAction.titleLabel?.font        = AppFonts.PersonDetail.buttonFont
+        btnAction.titleLabel?.textColor   = AppColors.PersonDetail.fontColor
+        btnAction.backgroundColor         = AppColors.PersonDetail.buttonBackgroundColor
         btnAction.setTitle(actionPersonType.getText(), for: .normal)
         btnAction.layer.cornerRadius = 5.0
 

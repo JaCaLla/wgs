@@ -40,7 +40,7 @@ class PersonDetailPresenter: UIViewController {
     private func setupPresenter() {  //(person:Person) {
 
         self.title = R.string.localizable.person_list_detail.key.localized
-        self.view.backgroundColor = AppColors.PersonDetail.Background
+        self.view.backgroundColor = AppColors.PersonDetail.background
 
         activityIndicator.style = .whiteLarge
         activityIndicator.isHidden = true

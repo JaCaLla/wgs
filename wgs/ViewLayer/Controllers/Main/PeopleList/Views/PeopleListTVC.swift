@@ -31,15 +31,15 @@ class PeopleListTVC: UITableViewCell {
     }
 
     func setupView() {
-        self.backgroundColor = AppColors.PersonsList.Background
+        self.backgroundColor = AppColors.PersonsList.background
 
         self.selectionStyle = .none
 
-        lblFirst.font = AppFonts.PersonsList.FirstFont
-        lblFirst.textColor = AppColors.PersonsList.FirstFontColor
+        lblFirst.font = AppFonts.PersonsList.firstFont
+        lblFirst.textColor = AppColors.PersonsList.firstFontColor
 
-        lblEmail.font = AppFonts.PersonsList.EmailFont
-        lblEmail.textColor = AppColors.PersonsList.EmailFontColor
+        lblEmail.font = AppFonts.PersonsList.emailFont
+        lblEmail.textColor = AppColors.PersonsList.emailFontColor
     }
 
     // MARK: - Private/Internal
